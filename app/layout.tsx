@@ -1,14 +1,11 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
-
 export const metadata: Metadata = {
-  title: 'Next Horizons | AI-Powered Digital Solutions',
-  description: 'Shaping the future of your digital presence and intelligence. AI-powered website redesign and intelligent due diligence solutions.',
+  title: 'Next Horizons | AI websites and due diligence software',
+  description:
+    'Next Horizons develops modern websites and practical due diligence software for businesses that value clarity, trust and measurable results.',
   generator: 'Next Horizons',
   icons: {
     icon: [
