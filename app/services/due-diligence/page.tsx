@@ -372,23 +372,6 @@ export default function DueDiligencePage() {
           </div>
         </section>
 
-        {/* Testimonial */}
-        <section className="relative py-24">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-            <Quote className="mx-auto h-10 w-10 text-blue-600/30" />
-            <blockquote className="mt-6 text-2xl font-semibold leading-relaxed text-foreground sm:text-3xl">
-              &ldquo;Our CDD review backlog went from three weeks to three days in the first month. The reports are more thorough than what we produced manually — and our regulator reviewed them without a single question.&rdquo;
-            </blockquote>
-            <div className="mt-8 flex items-center justify-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-blue-600/20 to-slate-400/20 text-sm font-bold text-blue-700">SV</div>
-              <div className="text-left">
-                <p className="font-semibold text-foreground">Head of Compliance &amp; MLRO</p>
-                <p className="text-sm text-muted-foreground">Regional bank, UAE</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Security Badges */}
         <section className="relative bg-foreground/[0.02] py-24">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

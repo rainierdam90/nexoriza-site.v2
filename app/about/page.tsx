@@ -97,7 +97,7 @@ export default function AboutPage() {
                   We redesign business websites using AI-assisted design tools and modern development practices. The result is a site that is visually current, technically sound, and structured to convert — delivered in four to eight weeks.
                 </p>
                 <p className="mt-3 text-muted-foreground leading-relaxed">
-                  Our clients range from professional services firms to technology companies and financial institutions across the MENA region and Europe.
+                  Our primary focus is the UAE, with clients ranging from professional services firms to technology companies and financial institutions. We also serve clients across the EU and other countries worldwide.
                 </p>
                 <Button asChild variant="outline" size="sm" className="mt-6 border-border/50">
                   <Link href="/services/website-redesign">Website Redesign <ArrowRight className="ml-2 h-3 w-3" /></Link>
@@ -153,10 +153,10 @@ export default function AboutPage() {
                 <p className="text-sm font-semibold uppercase tracking-wider text-blue-600">Where We Are</p>
                 <h2 className="mt-2 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Based in Dubai, Serving Clients Globally</h2>
                 <p className="mt-6 text-muted-foreground leading-relaxed">
-                  Next Horizons is incorporated and based in Dubai Silicon Oasis — a regulated free zone and hub for technology companies operating across the MENA region and beyond.
+                  Next Horizons is incorporated and based in Dubai Silicon Oasis — a regulated free zone and hub for technology companies, ideally positioned to serve the UAE and the wider world.
                 </p>
                 <p className="mt-4 text-muted-foreground leading-relaxed">
-                  From Dubai, we serve clients across the Middle East, Europe, and wider EMEA. Our compliance platform is designed to meet the regulatory requirements of multiple jurisdictions, and our design work is delivered remotely with no loss of quality.
+                  Our primary focus is the UAE, where we serve financial institutions, technology companies, and professional services firms operating in one of the world's most dynamic markets. We also work with clients across the EU and other countries worldwide — our compliance platform is built to meet the regulatory requirements of multiple jurisdictions, and our design work is delivered remotely with no loss of quality.
                 </p>
                 <div className="mt-8 rounded-xl border border-border/50 bg-foreground/[0.02] p-5">
                   <p className="text-sm font-semibold text-foreground">Next Horizons FZCO</p>
@@ -169,7 +169,7 @@ export default function AboutPage() {
                 {[
                   { label: "Incorporated", value: "Dubai Silicon Oasis" },
                   { label: "Regulatory Framework", value: "IFZA Free Zone" },
-                  { label: "Clients Based In", value: "MENA, Europe, APAC" },
+                  { label: "Clients Based In", value: "UAE (primary), EU & worldwide" },
                   { label: "Languages Supported", value: "English, Arabic" },
                 ].map((item) => (
                   <div key={item.label} className="rounded-xl border border-border/50 bg-background/50 p-5">

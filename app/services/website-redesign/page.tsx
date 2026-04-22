@@ -20,7 +20,6 @@ import {
   CheckCircle,
   TrendingUp,
   Clock,
-  Quote,
   Tag,
 } from "lucide-react"
 import type { Metadata } from "next"
@@ -296,23 +295,6 @@ export default function WebsiteRedesignPage() {
                   </div>
                 </div>
               ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Testimonial */}
-        <section className="relative py-24">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-            <Quote className="mx-auto h-10 w-10 text-blue-600/30" />
-            <blockquote className="mt-6 text-2xl font-semibold leading-relaxed text-foreground sm:text-3xl">
-              &ldquo;We had been postponing a redesign for two years. Next Horizons delivered in six weeks. Our homepage conversion rate went from 1.8% to 5.4%. That is not a small number when you are spending on advertising.&rdquo;
-            </blockquote>
-            <div className="mt-8 flex items-center justify-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-blue-600/20 to-slate-400/20 text-sm font-bold text-blue-700">RD</div>
-              <div className="text-left">
-                <p className="font-semibold text-foreground">Head of Growth</p>
-                <p className="text-sm text-muted-foreground">B2B technology company, Dubai</p>
-              </div>
             </div>
           </div>
         </section>

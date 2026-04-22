@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { AnimatedBackground } from "@/components/animated-background"
-import { ArrowRight, Star } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 
 export function HeroSection() {
   return (
@@ -26,21 +26,6 @@ export function HeroSection() {
           We help organisations modernise their digital presence and streamline compliance workflows — using the most capable AI available, applied with precision.
         </p>
 
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-2 text-sm text-muted-foreground">
-          <div className="flex -space-x-1">
-            {["BF","JK","RM","AL"].map((init, i) => (
-              <div key={i} className="flex h-6 w-6 items-center justify-center rounded-full border-2 border-background bg-gradient-to-br from-blue-600/40 to-slate-400/40 text-[9px] font-bold text-blue-700">
-                {init}
-              </div>
-            ))}
-          </div>
-          <div className="flex items-center gap-0.5">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} className="h-3 w-3 fill-amber-400 text-amber-400" />
-            ))}
-          </div>
-          <span>Trusted by financial institutions and growing companies across EMEA</span>
-        </div>
 
         <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
           <Button

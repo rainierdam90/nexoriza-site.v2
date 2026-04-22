@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { useState } from "react"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -11,14 +12,8 @@ export function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/services/website-redesign" className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-700 to-slate-400">
-            <span className="text-sm font-bold text-white">NH</span>
-          </div>
-          <div className="flex flex-col leading-tight">
-            <span className="text-sm font-bold text-foreground tracking-tight">Next Horizons</span>
-            <span className="text-[10px] text-muted-foreground tracking-wide">Software &amp; Web Design</span>
-          </div>
+        <Link href="/services/website-redesign" className="flex items-center">
+          <Image src="/new_logo.png" alt="Next Horizons Logo" width={180} height={50} className="h-10 w-auto" priority />
         </Link>
 
         {/* Desktop Navigation */}
