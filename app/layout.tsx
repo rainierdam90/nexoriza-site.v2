@@ -1,41 +1,28 @@
 import type { Metadata } from 'next'
-import { Analytics } from '@vercel/analytics/next'
+import { Geist } from 'next/font/google'
 import './globals.css'
 
+const geist = Geist({ subsets: ["latin"] })
+
 export const metadata: Metadata = {
-  title: 'Next Horizons | AI websites and due diligence software',
-  description:
-    'Next Horizons develops modern websites and practical due diligence software for businesses that value clarity, trust and measurable results.',
+  title: 'Next Horizons | Software & Web Design',
+  description: 'AI-powered website redesign and intelligent due diligence software. Based in Dubai, serving clients across MENA and Europe. Request a free redesign mockup today.',
   generator: 'Next Horizons',
   icons: {
     icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
+      { url: '/icon-light-32x32.png', media: '(prefers-color-scheme: light)' },
+      { url: '/icon-dark-32x32.png', media: '(prefers-color-scheme: dark)' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
     ],
     apple: '/apple-icon.png',
   },
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="bg-background">
-      <body className="font-sans antialiased">
+      <body className={`${geist.className} antialiased`}>
         {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
   )

@@ -1,10 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  typescript: {
-    ignoreBuildErrors: true,
-  },
   images: {
-    unoptimized: true,
+    // Local /public images work without any config — this handles external if needed
+    remotePatterns: [],
   },
 }
 
