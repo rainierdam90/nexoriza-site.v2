@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Linkedin, Mail, MapPin } from "lucide-react"
 
 export function Footer() {
@@ -9,14 +10,14 @@ export function Footer() {
 
           {/* Logo & Tagline */}
           <div className="lg:col-span-2">
-            <Link href="/services/website-redesign" className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-700 to-slate-400">
-                <span className="text-sm font-bold text-white">NH</span>
-              </div>
-              <div className="flex flex-col leading-tight">
-                <span className="text-sm font-bold text-foreground tracking-tight">Next Horizons</span>
-                <span className="text-[10px] text-muted-foreground tracking-wide">Software &amp; Web Design</span>
-              </div>
+            <Link href="/services/website-redesign" className="inline-flex items-center">
+              <Image
+                src="/new_logo.png"
+                alt="Next Horizons Logo"
+                width={200}
+                height={50}
+                className="h-12 w-auto"
+              />
             </Link>
             <p className="mt-4 max-w-sm text-sm text-muted-foreground leading-relaxed">
               AI-powered website redesign and intelligent due diligence software — built for organisations that expect measurable results.
@@ -51,7 +52,7 @@ export function Footer() {
               <li><Link href="/services/website-redesign" className="text-sm text-muted-foreground transition-colors hover:text-foreground">AI Website Redesign</Link></li>
               <li><Link href="/request-mockup" className="text-sm text-muted-foreground transition-colors hover:text-foreground">Free Redesign Mockup</Link></li>
               <li><Link href="/services/due-diligence" className="text-sm text-muted-foreground transition-colors hover:text-foreground">Due Diligence Software</Link></li>
-              <li><Link href="/contact" className="text-sm text-muted-foreground transition-colors hover:text-foreground">Request a Demo</Link></li>
+              <li><Link href="/book-call" className="text-sm text-muted-foreground transition-colors hover:text-foreground">Book a Call</Link></li>
             </ul>
           </div>
 
@@ -61,8 +62,8 @@ export function Footer() {
             <ul className="mt-4 space-y-3">
               <li><Link href="/about" className="text-sm text-muted-foreground transition-colors hover:text-foreground">About Us</Link></li>
               <li><Link href="/contact" className="text-sm text-muted-foreground transition-colors hover:text-foreground">Contact</Link></li>
-              <li><a href="#" className="text-sm text-muted-foreground transition-colors hover:text-foreground">Privacy Policy</a></li>
-              <li><a href="#" className="text-sm text-muted-foreground transition-colors hover:text-foreground">Terms of Service</a></li>
+              <li><Link href="/privacy" className="text-sm text-muted-foreground transition-colors hover:text-foreground">Privacy Policy</Link></li>
+              <li><Link href="/terms" className="text-sm text-muted-foreground transition-colors hover:text-foreground">Terms of Service</Link></li>
             </ul>
           </div>
         </div>

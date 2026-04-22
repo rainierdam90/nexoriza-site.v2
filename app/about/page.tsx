@@ -3,7 +3,7 @@ import { Footer } from "@/components/footer"
 import { AnimatedBackground } from "@/components/animated-background"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { ArrowRight, Lightbulb, Heart, Target, Users } from "lucide-react"
+import { ArrowRight, Lightbulb, ShieldCheck, Target, Users } from "lucide-react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 const values = [
   { icon: Lightbulb, title: "Purposeful Use of AI", description: "We apply AI where it genuinely improves on what was possible before — not because it is expected. Every model and tool we use has a clear reason for being in the workflow." },
-  { icon: Heart, title: "Integrity in Everything", description: "In compliance and in client relationships, trust is earned through consistency. We are straightforward about what our tools can and cannot do." },
+  { icon: ShieldCheck, title: "Integrity in Everything", description: "In compliance and in client relationships, trust is earned through consistency. We are straightforward about what our tools can and cannot do." },
   { icon: Target, title: "Measured Results", description: "We define success by the outcomes we deliver — conversion rates, review turnaround times, regulatory findings — not by outputs or hours." },
   { icon: Users, title: "Long-Term Partnerships", description: "We do not consider an engagement complete at the point of delivery. We remain involved, attentive, and invested in the results our clients see." },
 ]
@@ -25,7 +25,7 @@ export default function AboutPage() {
       <main className="flex-1">
 
         {/* Hero */}
-        <section className="relative overflow-hidden pt-16">
+        <section className="relative overflow-hidden pt-20">
           <AnimatedBackground />
           <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
             <div className="mx-auto max-w-3xl text-center">
@@ -97,7 +97,7 @@ export default function AboutPage() {
                   We redesign business websites using AI-assisted design tools and modern development practices. The result is a site that is visually current, technically sound, and structured to convert — delivered in four to eight weeks.
                 </p>
                 <p className="mt-3 text-muted-foreground leading-relaxed">
-                  Our primary focus is the UAE, with clients ranging from professional services firms to technology companies and financial institutions. We also serve clients across the EU and other countries worldwide.
+                  Our primary focus is the UAE, with clients ranging from professional services firms to technology companies and financial institutions. We also serve selected clients in other countries worldwide.
                 </p>
                 <Button asChild variant="outline" size="sm" className="mt-6 border-border/50">
                   <Link href="/services/website-redesign">Website Redesign <ArrowRight className="ml-2 h-3 w-3" /></Link>
@@ -156,7 +156,7 @@ export default function AboutPage() {
                   Next Horizons is incorporated and based in Dubai Silicon Oasis — a regulated free zone and hub for technology companies, ideally positioned to serve the UAE and the wider world.
                 </p>
                 <p className="mt-4 text-muted-foreground leading-relaxed">
-                  Our primary focus is the UAE, where we serve financial institutions, technology companies, and professional services firms operating in one of the world's most dynamic markets. We also work with clients across the EU and other countries worldwide — our compliance platform is built to meet the regulatory requirements of multiple jurisdictions, and our design work is delivered remotely with no loss of quality.
+                  Our primary focus is the UAE, where we serve financial institutions, technology companies, and professional services firms operating in one of the world&apos;s most dynamic markets. We also work with selected clients in other countries worldwide — our compliance platform is built to meet the regulatory requirements of multiple jurisdictions, and our design work is delivered remotely with no loss of quality.
                 </p>
                 <div className="mt-8 rounded-xl border border-border/50 bg-foreground/[0.02] p-5">
                   <p className="text-sm font-semibold text-foreground">Next Horizons FZCO</p>
@@ -169,7 +169,7 @@ export default function AboutPage() {
                 {[
                   { label: "Incorporated", value: "Dubai Silicon Oasis" },
                   { label: "Regulatory Framework", value: "IFZA Free Zone" },
-                  { label: "Clients Based In", value: "UAE (primary), EU & worldwide" },
+                  { label: "Clients Based In", value: "UAE (primary) & worldwide" },
                   { label: "Languages Supported", value: "English, Arabic" },
                 ].map((item) => (
                   <div key={item.label} className="rounded-xl border border-border/50 bg-background/50 p-5">

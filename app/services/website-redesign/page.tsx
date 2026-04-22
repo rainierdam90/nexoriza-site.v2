@@ -63,11 +63,11 @@ const features = [
   { icon: FileText, title: "AI Copy Assistance", description: "Clear, persuasive copy — written and refined with AI support" },
   { icon: Gauge, title: "High Performance", description: "Optimised load times and clean code that search engines reward" },
   { icon: Database, title: "CMS Integration", description: "Update your own content without technical knowledge" },
-  { icon: Headphones, title: "3 Months Support", description: "Post-launch assistance included as standard" },
+  { icon: Headphones, title: "Three Months Support", description: "Post-launch assistance included as standard" },
 ]
 
 const stats = [
-  { value: "3×", label: "Average conversion improvement", sub: "across redesign projects" },
+  { value: "3×*", label: "Average conversion improvement", sub: "across redesign projects" },
   { value: "48h", label: "To your first design concept", sub: "from submitted request" },
   { value: "100%", label: "Fixed-price projects", sub: "no unexpected invoices" },
 ]
@@ -102,7 +102,7 @@ export default function WebsiteRedesignPage() {
       <main className="flex-1">
 
         {/* Hero */}
-        <section className="relative overflow-hidden pt-16">
+        <section className="relative overflow-hidden pt-20">
           <AnimatedBackground />
           <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
             <div className="mx-auto max-w-3xl text-center">
@@ -117,7 +117,7 @@ export default function WebsiteRedesignPage() {
                 </span>
               </h1>
               <p className="mt-6 text-lg text-muted-foreground sm:text-xl">
-                We redesign business websites using the most advanced AI tools available — delivering a sharper design, faster performance, and measurably better results. See your new website before you spend a single dirham.
+                We redesign business websites using the most advanced AI tools available — delivering a sharper design, faster performance, and measurably better results. See your new website before you spend a single cent.
               </p>
               <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
                 <Button asChild size="lg" className="group bg-gradient-to-r from-blue-700 to-slate-500 text-white hover:from-blue-800 hover:to-slate-600 shadow-lg shadow-blue-700/20">
@@ -146,6 +146,9 @@ export default function WebsiteRedesignPage() {
                 </div>
               ))}
             </div>
+            <p className="mt-8 text-center text-xs text-muted-foreground/70">
+              * Actual results vary based on your starting point, project scope, configuration, and market conditions. Figures shown reflect typical outcomes across past engagements and are illustrative only.
+            </p>
           </div>
         </section>
 

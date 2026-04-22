@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Mail, MapPin, Calendar, Send, Clock, MessageSquare, CheckCircle } from "lucide-react"
+import Link from "next/link"
 import { useState, useRef } from "react"
 
 export default function ContactPage() {
@@ -47,7 +48,7 @@ export default function ContactPage() {
     <div className="flex min-h-screen flex-col">
       <Header />
       <main className="flex-1">
-        <section className="relative overflow-hidden pt-16">
+        <section className="relative overflow-hidden pt-20">
           <AnimatedBackground />
           <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-2xl text-center">
@@ -121,9 +122,11 @@ export default function ContactPage() {
                   <p className="mt-2 text-sm text-muted-foreground">
                     Book a 30-minute introductory call. We will discuss your situation and give you a clear sense of what is possible — without any sales pressure.
                   </p>
-                  <Button variant="outline" className="mt-4 gap-2 border-border/50 bg-background/50 backdrop-blur-sm hover:bg-background/80">
-                    <Calendar className="h-4 w-4" />
-                    Book a 30-Minute Call
+                  <Button asChild variant="outline" className="mt-4 gap-2 border-border/50 bg-background/50 backdrop-blur-sm hover:bg-background/80">
+                    <Link href="/book-call">
+                      <Calendar className="h-4 w-4" />
+                      Book a 30-Minute Call
+                    </Link>
                   </Button>
                 </div>
               </div>

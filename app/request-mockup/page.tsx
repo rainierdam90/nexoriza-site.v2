@@ -42,7 +42,7 @@ export default function RequestMockupPage() {
     <div className="flex min-h-screen flex-col">
       <Header />
       <main className="flex-1">
-        <section className="relative overflow-hidden pt-16">
+        <section className="relative overflow-hidden pt-20">
           <AnimatedBackground />
           <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-2xl text-center">

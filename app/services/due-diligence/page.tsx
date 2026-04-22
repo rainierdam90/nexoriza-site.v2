@@ -21,7 +21,6 @@ import {
   Lock,
   Clock,
   TrendingDown,
-  Quote,
   Settings,
   Server,
 } from "lucide-react"
@@ -138,7 +137,7 @@ export default function DueDiligencePage() {
       <main className="flex-1">
 
         {/* Hero */}
-        <section className="relative overflow-hidden pt-16">
+        <section className="relative overflow-hidden pt-20">
           <AnimatedBackground />
           <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
             <div className="mx-auto max-w-3xl text-center">
@@ -163,7 +162,7 @@ export default function DueDiligencePage() {
                   </Link>
                 </Button>
                 <Button asChild variant="outline" size="lg" className="border-border/50 bg-background/50 backdrop-blur-sm">
-                  <Link href="/contact">Speak to a Compliance Specialist</Link>
+                  <Link href="/book-call?topic=compliance-specialist">Speak to a Compliance Specialist</Link>
                 </Button>
               </div>
             </div>
@@ -175,7 +174,7 @@ export default function DueDiligencePage() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 gap-8 text-center md:grid-cols-4">
               {[
-                { value: "80%", label: "Reduction in research time" },
+                { value: "80%*", label: "Reduction in research time" },
                 { value: "500+", label: "OSINT sources covered" },
                 { value: "60+", label: "Sanctions lists screened" },
                 { value: "100+", label: "Languages for media screening" },
@@ -186,6 +185,9 @@ export default function DueDiligencePage() {
                 </div>
               ))}
             </div>
+            <p className="mt-8 text-center text-xs text-muted-foreground/70">
+              * Actual results vary based on your current workflow, configuration, review complexity, and data sources. Figures shown reflect typical outcomes across past engagements and are illustrative only.
+            </p>
           </div>
         </section>
 
