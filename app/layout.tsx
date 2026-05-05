@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Geist } from 'next/font/google'
 import './globals.css'
+import CrispChat from '@/components/crisp-chat'
 
 const geist = Geist({ subsets: ["latin"] })
 
@@ -23,6 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className="bg-background">
       <body className={`${geist.className} antialiased`}>
         {children}
+        <CrispChat />
       </body>
     </html>
   )
