@@ -1,0 +1,59 @@
+[
+  {
+    "token": "acme-trading-demo-abc123xyz",
+    "companyName": "Acme Trading LLC",
+    "contactName": "Sarah",
+    "currentWebsite": "https://acme-trading.example.com",
+    "pages": [
+      {
+        "label": "Homepage",
+        "beforeImage": "/mockups/acme-trading-demo-abc123xyz/homepage-before.svg",
+        "afterImage": "/mockups/acme-trading-demo-abc123xyz/homepage-after.svg",
+        "notes": "Refreshed hero, clearer value proposition above the fold, and a streamlined navigation."
+      },
+      {
+        "label": "Services Page",
+        "beforeImage": "/mockups/acme-trading-demo-abc123xyz/services-before.svg",
+        "afterImage": "/mockups/acme-trading-demo-abc123xyz/services-after.svg",
+        "notes": "Reorganised into scannable cards with consistent iconography."
+      }
+    ],
+    "deliverables": [
+      "Full website redesign — all pages on your current site",
+      "Mobile-first responsive layouts",
+      "AI-assisted copy refinement on every page",
+      "CMS integration so you can edit content yourself",
+      "SEO basics: meta tags, semantic HTML, sitemap",
+      "Three months of post-launch support"
+    ],
+    "priceMinor": 350000,
+    "currency": "AED",
+    "status": "pending",
+    "createdAt": "2026-04-15T10:00:00.000Z",
+    "internalNote": "Sarah requested an emphasis on trust signals — make sure to highlight years in business and certifications."
+  },
+  {
+    "token": "globex-corp-paid-def456uvw",
+    "companyName": "Globex Corp",
+    "contactName": "Marcus",
+    "currentWebsite": "https://globex.example.com",
+    "pages": [
+      {
+        "label": "Homepage",
+        "beforeImage": "/mockups/globex-corp-paid-def456uvw/homepage-before.svg",
+        "afterImage": "/mockups/globex-corp-paid-def456uvw/homepage-after.svg"
+      }
+    ],
+    "deliverables": [
+      "Full website redesign",
+      "Mobile-first responsive layouts",
+      "Three months of post-launch support"
+    ],
+    "priceMinor": 250000,
+    "currency": "USD",
+    "status": "paid",
+    "createdAt": "2026-03-20T09:30:00.000Z",
+    "paidAt": "2026-03-22T14:15:00.000Z",
+    "stripePaymentIntentId": "pi_example_already_paid"
+  }
+]
