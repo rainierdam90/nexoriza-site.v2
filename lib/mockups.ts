@@ -50,9 +50,11 @@ const stateCache = new Map<string, CachedState>()
 /**
  * Look up payment state for a single token from Stripe.
  *
- * We use Stripe's `checkout.sessions.list` with metadata search via the
- * search API. If we find a completed session whose metadata.mockupToken
- * matches, the mockup is paid.
+ * We paginate through recent Checkout Sessions and find one whose
+ * metadata.mockupToken matches. We deliberately do NOT use Stripe's
+ * `search` API here — it's only available on certain account types and its
+ * TypeScript bindings vary across SDK versions. List-based lookup works on
+ * every account.
  *
  * Returns undefined if Stripe is not configured (callers should fall back
  * to seed status).
@@ -63,61 +65,11 @@ async function fetchStateFromStripe(
   if (!isStripeConfigured()) return undefined
 
   const stripe = getStripe()
-
-  try {
-    // Use Stripe's search API to find a completed session for this token.
-    // The query is escaped via Stripe's syntax — token is alphanumeric +
-    // hyphens, so it's safe.
-    const result = await stripe.checkout.sessions.search({
-      query: `metadata['mockupToken']:'${token.replace(/'/g, "\\'")}' AND status:'complete'`,
-      limit: 1,
-    })
-
-    const session = result.data[0]
-    if (!session) {
-      return {
-        paid: false,
-        fetchedAt: Date.now(),
-      }
-    }
-
-    const piId =
-      typeof session.payment_intent === "string"
-        ? session.payment_intent
-        : session.payment_intent?.id
-
-    return {
-      paid: true,
-      paidAt: session.created
-        ? new Date(session.created * 1000).toISOString()
-        : new Date().toISOString(),
-      stripePaymentIntentId: piId,
-      stripeSessionId: session.id,
-      fetchedAt: Date.now(),
-    }
-  } catch (err) {
-    // If the search API fails (e.g. account doesn't have it enabled), fall
-    // back to listing recent sessions and filtering manually. Stripe's
-    // search index can take a few seconds to update so this is also a
-    // useful fallback for very fresh payments.
-    console.warn(
-      "[mockups-runtime] Stripe search failed, falling back to list:",
-      err instanceof Error ? err.message : err,
-    )
-    return fetchStateFromStripeList(token)
-  }
-}
-
-/**
- * Fallback: paginate recent Checkout Sessions and find a match by metadata.
- * Slower than search but works on every Stripe account.
- */
-async function fetchStateFromStripeList(
-  token: string,
-): Promise<CachedState> {
-  const stripe = getStripe()
   let starting_after: string | undefined
-  // Cap at 5 pages (500 sessions) — way more than we'll ever need at our scale
+
+  // Cap at 5 pages (500 sessions). For our scale this is more than enough —
+  // Stripe sessions are listed newest-first, so the relevant one is almost
+  // always on page 1.
   for (let page = 0; page < 5; page++) {
     const list: Stripe.ApiList<Stripe.Checkout.Session> =
       await stripe.checkout.sessions.list({
