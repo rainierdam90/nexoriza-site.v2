@@ -17,6 +17,10 @@ import { logoutAction } from "./actions"
 import { CopyButton } from "@/components/admin/copy-button"
 import type { Metadata } from "next"
 
+// Force dynamic rendering — admin and customer-private pages must
+// always reflect the latest state, never a cached snapshot.
+export const dynamic = "force-dynamic"
+
 export const metadata: Metadata = {
   title: "Admin Dashboard · Next Horizons",
   robots: { index: false, follow: false },

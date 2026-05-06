@@ -23,7 +23,7 @@
 
 import fs from "node:fs"
 import path from "node:path"
-import { put, list } from "@vercel/blob"
+import { put, head } from "@vercel/blob"
 
 export type MockupStatus =
   | "pending"   // Customer can view and unlock
@@ -90,11 +90,6 @@ function isBlobAvailable(): boolean {
   return !!process.env.BLOB_READ_WRITE_TOKEN
 }
 
-// In-memory cache so we don't re-fetch the blob on every page render in
-// the same function instance. Cache busts on writes.
-let memCache: { data: Mockup[]; fetchedAt: number } | null = null
-const CACHE_TTL_MS = 10 * 1000
-
 function readLocalSeed(): Mockup[] {
   try {
     const raw = fs.readFileSync(LOCAL_FILE, "utf-8")
@@ -104,20 +99,40 @@ function readLocalSeed(): Mockup[] {
   }
 }
 
+// In-memory cache for the *current Blob URL* (not data). After we write,
+// `put()` returns the canonical URL we just created — we remember it so
+// subsequent reads in the same function instance hit the right URL
+// directly without going through eventually-consistent list() / head().
+// Other function instances will look it up via head() on first miss.
+let cachedBlobUrl: string | null = null
+
 async function readFromBlob(): Promise<Mockup[]> {
-  // Find the current mockups.json blob. We use list() because put() with
-  // addRandomSuffix:false should return a stable URL, but Vercel Blob
-  // doesn't have a "fetch by key" API directly — list with prefix is the
-  // canonical way.
-  const { blobs } = await list({ prefix: BLOB_KEY, limit: 1 })
-  const blob = blobs.find((b) => b.pathname === BLOB_KEY)
-  if (!blob) {
-    // First-time setup: seed the blob from the bundled JSON
+  // Path A — we have a remembered URL from a recent write in this instance.
+  // Append a cache-buster so the CDN doesn't serve a stale version.
+  if (cachedBlobUrl) {
+    const url = `${cachedBlobUrl}?t=${Date.now()}`
+    const res = await fetch(url, { cache: "no-store" })
+    if (res.ok) return (await res.json()) as Mockup[]
+    // Fall through if the URL stopped working for any reason.
+    cachedBlobUrl = null
+  }
+
+  // Path B — look up the canonical URL via head(). head() is strongly
+  // consistent (unlike list()), so it works immediately after a write.
+  let blobUrl: string | undefined
+  try {
+    const meta = await head(BLOB_KEY)
+    blobUrl = meta.url
+  } catch {
+    // head() throws if the blob doesn't exist yet → first-time setup.
+    // Seed it from the bundled JSON.
     const seed = readLocalSeed()
     await writeToBlob(seed)
     return seed
   }
-  const res = await fetch(blob.url, { cache: "no-store" })
+
+  cachedBlobUrl = blobUrl
+  const res = await fetch(`${blobUrl}?t=${Date.now()}`, { cache: "no-store" })
   if (!res.ok) {
     throw new Error(`Failed to fetch mockups blob: ${res.status}`)
   }
@@ -125,14 +140,16 @@ async function readFromBlob(): Promise<Mockup[]> {
 }
 
 async function writeToBlob(mockups: Mockup[]): Promise<void> {
-  await put(BLOB_KEY, JSON.stringify(mockups, null, 2), {
+  const result = await put(BLOB_KEY, JSON.stringify(mockups, null, 2), {
     access: "public",
     contentType: "application/json",
-    // We want the URL stable so we can locate it on next read.
     addRandomSuffix: false,
-    // Always overwrite the existing blob.
     allowOverwrite: true,
+    // Don't cache writes — we always want fresh reads for admin operations.
+    cacheControlMaxAge: 0,
   })
+  // Remember the URL so subsequent reads in this instance use it directly.
+  cachedBlobUrl = result.url
 }
 
 function writeLocal(mockups: Mockup[]): void {
@@ -142,23 +159,25 @@ function writeLocal(mockups: Mockup[]): void {
 
 /** Read all mockups from whichever backend is active */
 async function loadAll(): Promise<Mockup[]> {
-  if (memCache && Date.now() - memCache.fetchedAt < CACHE_TTL_MS) {
-    return memCache.data
-  }
-
-  const data = isBlobAvailable() ? await readFromBlob() : readLocalSeed()
-  memCache = { data, fetchedAt: Date.now() }
-  return data
+  return isBlobAvailable() ? await readFromBlob() : readLocalSeed()
 }
 
-/** Persist a new full list and bust the in-memory cache */
+/** Persist a new full list */
 async function saveAll(mockups: Mockup[]): Promise<void> {
   if (isBlobAvailable()) {
     await writeToBlob(mockups)
+  } else if (process.env.VERCEL) {
+    // We're running on Vercel without Blob configured. Vercel's filesystem
+    // is read-only at runtime, so writeLocal() would throw EROFS — give
+    // the admin a clear message instead.
+    throw new Error(
+      "Vercel Blob storage is not configured. To save mockups, go to your " +
+        "Vercel project → Storage → Create Database → Blob, connect it to " +
+        "this project, then redeploy. See CHECKOUT_SETUP.md for details.",
+    )
   } else {
     writeLocal(mockups)
   }
-  memCache = { data: mockups, fetchedAt: Date.now() }
 }
 
 // ─────────────────────────────────────────────────────────────────

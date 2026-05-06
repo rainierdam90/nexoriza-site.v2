@@ -6,6 +6,10 @@ import { isAdminAuthenticated } from "@/lib/admin-auth"
 import { redirect } from "next/navigation"
 import type { Metadata } from "next"
 
+// Force dynamic rendering — admin and customer-private pages must
+// always reflect the latest state, never a cached snapshot.
+export const dynamic = "force-dynamic"
+
 export const metadata: Metadata = {
   title: "Admin · Next Horizons",
   robots: { index: false, follow: false },

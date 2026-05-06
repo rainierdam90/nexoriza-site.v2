@@ -8,6 +8,10 @@ import { ArrowLeft, ExternalLink } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import type { Metadata } from "next"
 
+// Force dynamic rendering — admin and customer-private pages must
+// always reflect the latest state, never a cached snapshot.
+export const dynamic = "force-dynamic"
+
 interface PageProps {
   params: Promise<{ token: string }>
 }

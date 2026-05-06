@@ -5,6 +5,10 @@ import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 import type { Metadata } from "next"
 
+// Force dynamic rendering — admin and customer-private pages must
+// always reflect the latest state, never a cached snapshot.
+export const dynamic = "force-dynamic"
+
 export const metadata: Metadata = {
   title: "New Mockup · Admin · Next Horizons",
   robots: { index: false, follow: false },

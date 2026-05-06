@@ -9,6 +9,10 @@ import { CheckCircle, Clock, ExternalLink, Sparkles, ShieldCheck } from "lucide-
 import { notFound } from "next/navigation"
 import type { Metadata } from "next"
 
+// Force dynamic rendering — admin and customer-private pages must
+// always reflect the latest state, never a cached snapshot.
+export const dynamic = "force-dynamic"
+
 interface PageProps {
   params: Promise<{ token: string }>
 }
