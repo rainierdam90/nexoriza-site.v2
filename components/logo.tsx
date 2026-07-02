@@ -45,9 +45,14 @@ export function Logo({ className }: { className?: string }) {
           strokeLinecap="round"
         />
       </svg>
-      <span className="flex flex-col font-bold uppercase leading-[1.05] tracking-[0.18em] text-[1.02rem]">
-        <span>Next</span>
-        <span>Horizons</span>
+      <span className="flex flex-col justify-center">
+        <span className="flex flex-col font-bold uppercase leading-[1.05] tracking-[0.16em] text-[0.92rem]">
+          <span>Next</span>
+          <span>Horizons</span>
+        </span>
+        <span className="mt-1 text-[0.44rem] font-medium uppercase tracking-[0.28em] text-muted-foreground">
+          Software &amp; Web Design
+        </span>
       </span>
     </span>
   )
