@@ -1,6 +1,6 @@
 import Link from "next/link"
-import Image from "next/image"
 import { Linkedin, Mail, MapPin } from "lucide-react"
+import { Logo } from "@/components/logo"
 
 export function Footer() {
   return (
@@ -11,13 +11,7 @@ export function Footer() {
           {/* Logo & Tagline */}
           <div className="lg:col-span-2">
             <Link href="/services/website-redesign" className="inline-flex items-center">
-              <Image
-                src="/new_logo.png"
-                alt="Next Horizons Logo"
-                width={200}
-                height={50}
-                className="h-12 w-auto"
-              />
+              <Logo className="h-11 text-foreground" />
             </Link>
             <p className="mt-4 max-w-sm text-sm text-muted-foreground leading-relaxed">
               AI-powered website redesign and intelligent due diligence software — built for organisations that expect measurable results.

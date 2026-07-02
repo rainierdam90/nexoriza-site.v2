@@ -23,12 +23,16 @@ import {
   TrendingDown,
   Settings,
   Server,
+  Eye,
+  ScrollText,
+  GitBranch,
+  ShieldCheck,
 } from "lucide-react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "AI-Powered Due Diligence Software | Next Horizons",
-  description: "AI-driven due diligence for financial institutions. OSINT research, CDD report writing, sanctions screening, source of income analysis, and real-time compliance intelligence — encrypted, on-premise.",
+  title: "AI-Assisted Compliance Tooling | Next Horizons",
+  description: "We build AI-assisted compliance tooling for financial institutions — OSINT research, CDD review drafting, sanctions screening, and source of income analysis — designed with AI governance and model-risk considerations at the core. Human-in-the-loop, explainable, encrypted, on-premise.",
 }
 
 const capabilities = [
@@ -107,6 +111,29 @@ const badges = [
   { icon: CheckCircle, title: "Audit-Ready Output", sub: "Formatted for your regulatory compliance file" },
 ]
 
+const governance = [
+  {
+    icon: Eye,
+    title: "Human-in-the-Loop by Design",
+    description: "The AI drafts, researches, and flags — it never decides. Every review is presented to a compliance officer for judgement and sign-off. Automation accelerates the work; accountability stays with your team.",
+  },
+  {
+    icon: ScrollText,
+    title: "Explainable & Traceable Output",
+    description: "Every finding carries its source citation, a confidence score, and the rationale behind it. Nothing is a black box — your officers, auditors, and regulators can see exactly why the tooling reached a conclusion.",
+  },
+  {
+    icon: GitBranch,
+    title: "Model-Risk Management",
+    description: "Models are documented, version-controlled, and monitored for drift. We validate behaviour against known cases, log every model version used in a review, and give you the artefacts your model-risk framework expects.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Aligned to Emerging AI Regulation",
+    description: "We build with the EU AI Act's transparency and risk-classification obligations in mind, alongside established AML/CFT frameworks — so the tooling stands up to scrutiny as expectations for AI in regulated settings continue to tighten.",
+  },
+]
+
 const faqs = [
   {
     q: "Can the platform be configured to match our specific requirements?",
@@ -125,8 +152,20 @@ const faqs = [
     a: "Adverse media screening covers 100+ languages, with AI-assisted translation and relevance scoring. This includes major international news databases, regional publications, and regulatory announcements often missed by English-only tools.",
   },
   {
-    q: "How is the platform priced?",
-    a: "We price on a per-review volume basis plus a monthly platform fee covering ongoing monitoring. We build the platform to your specifications — pricing is agreed during the scoping process. Contact us to discuss your review volumes and requirements.",
+    q: "Does the AI make compliance decisions on its own?",
+    a: "No. The tooling is AI-assisted, not autonomous. It researches, drafts, and flags — but every review is presented to a compliance officer who reviews the reasoning and signs off. Human oversight is built into the workflow, and accountability for each decision stays with your team.",
+  },
+  {
+    q: "How do you address model risk and AI governance?",
+    a: "We treat model risk as a first-class design concern. Models are documented and version-controlled, the specific model version used is logged against every review, and behaviour is monitored for drift and validated against known cases. Because outputs are explainable — with source citations, confidence scores, and rationale — your model-risk framework and auditors get the artefacts they expect. We also build with the EU AI Act's transparency and risk-classification obligations in mind.",
+  },
+  {
+    q: "Is your client data used to train AI models?",
+    a: "No. Your client data, documents, and reports are never used to train models, and nothing leaves your environment. The tooling runs on your own server or private cloud, so your data stays under your control at all times.",
+  },
+  {
+    q: "How is the tooling priced?",
+    a: "We price on a per-review volume basis plus a monthly fee covering ongoing monitoring. We build the tooling to your specifications — pricing is agreed during the scoping process. Contact us to discuss your review volumes and requirements.",
   },
 ]
 
@@ -143,16 +182,16 @@ export default function DueDiligencePage() {
             <div className="mx-auto max-w-3xl text-center">
               <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border/50 bg-background/50 px-4 py-1.5 text-sm backdrop-blur-sm">
                 <span className="h-2 w-2 rounded-full bg-slate-500 animate-pulse" />
-                <span className="text-muted-foreground">Intelligent Due Diligence Software</span>
+                <span className="text-muted-foreground">AI-Assisted Compliance Tooling</span>
               </div>
               <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl">
-                CDD That Took Two Days.{" "}
+                AI-Assisted Compliance Tooling —{" "}
                 <span className="bg-gradient-to-r from-blue-700 to-slate-500 bg-clip-text text-transparent">
-                  Now Takes 15 Minutes.
+                  Built Around Your Governance.
                 </span>
               </h1>
               <p className="mt-6 text-lg text-muted-foreground sm:text-xl">
-                Our AI platform automates OSINT research, writes CDD reviews, analyses source of income documentation, screens against global sanctions lists, and keeps your team current on compliance developments — deployed on your own server, fully encrypted.
+                We build AI-assisted tooling that helps compliance teams work faster — OSINT research, CDD review drafting, source of income analysis, and sanctions screening. The AI does the heavy lifting; your officers keep the decision. Every component is designed with AI governance and model-risk considerations built in, and deployed on your own server, fully encrypted.
               </p>
               <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
                 <Button asChild size="lg" className="group bg-gradient-to-r from-blue-700 to-slate-500 text-white hover:from-blue-800 hover:to-slate-600">
@@ -212,10 +251,10 @@ export default function DueDiligencePage() {
         <section className="relative bg-foreground/[0.02] py-24">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-2xl text-center">
-              <p className="text-sm font-semibold uppercase tracking-wider text-blue-600">Platform Capabilities</p>
-              <h2 className="mt-2 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">What the Software Does</h2>
+              <p className="text-sm font-semibold uppercase tracking-wider text-blue-600">Tooling Capabilities</p>
+              <h2 className="mt-2 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">What the Tooling Does</h2>
               <p className="mt-4 text-lg text-muted-foreground">
-                A fully integrated compliance intelligence platform — covering every stage of the due diligence process.
+                AI-assisted components covering every stage of the due diligence process — each one assisting your officers rather than replacing their judgement.
               </p>
             </div>
             <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -374,11 +413,39 @@ export default function DueDiligencePage() {
           </div>
         </section>
 
+        {/* AI Governance & Model Risk */}
+        <section className="relative py-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-2xl text-center">
+              <p className="text-sm font-semibold uppercase tracking-wider text-blue-600">AI Governance &amp; Model Risk</p>
+              <h2 className="mt-2 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+                Built to Withstand the Questions a Regulator Will Ask
+              </h2>
+              <p className="mt-4 text-lg text-muted-foreground">
+                Deploying AI in a regulated compliance function raises its own risks. We treat AI governance and model-risk management as first-class design constraints — not an afterthought bolted on once the tool is built.
+              </p>
+            </div>
+            <div className="mt-16 grid gap-6 sm:grid-cols-2">
+              {governance.map((item) => (
+                <div key={item.title} className="flex items-start gap-5 rounded-xl border border-border/50 bg-background/50 p-6 backdrop-blur-sm transition-all hover:border-border hover:shadow-lg hover:shadow-blue-600/5">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-blue-700 to-slate-500">
+                    <item.icon className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-foreground">{item.title}</h3>
+                    <p className="mt-2 text-muted-foreground leading-relaxed">{item.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Security Badges */}
         <section className="relative bg-foreground/[0.02] py-24">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-2xl text-center">
-              <p className="text-sm font-semibold uppercase tracking-wider text-blue-600">Security &amp; Privacy</p>
+              <p className="text-sm font-semibold uppercase tracking-wider text-blue-600">Security, Privacy &amp; Compliance</p>
               <h2 className="mt-2 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Designed for Regulated Environments</h2>
               <p className="mt-4 text-lg text-muted-foreground">
                 Aligned with FATF 40 Recommendations, EU 6AMLD, and applicable AML/CFT frameworks across the jurisdictions we serve.
