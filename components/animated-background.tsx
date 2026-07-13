@@ -1,24 +1,29 @@
 "use client"
 
+import type { MouseEvent } from "react"
+
 export function AnimatedBackground() {
+  function handlePointer(event: MouseEvent<HTMLDivElement>) {
+    const rect = event.currentTarget.getBoundingClientRect()
+    event.currentTarget.style.setProperty("--pointer-x", `${((event.clientX - rect.left) / rect.width - 0.5) * 18}deg`)
+    event.currentTarget.style.setProperty("--pointer-y", `${((event.clientY - rect.top) / rect.height - 0.5) * -14}deg`)
+  }
+
   return (
-    <div className="absolute inset-0 -z-10 overflow-hidden">
-      {/* Gradient mesh background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-background to-slate-50" />
-      
-      {/* Animated gradient orbs */}
-      <div className="absolute -left-40 -top-40 h-80 w-80 animate-pulse rounded-full bg-blue-500/10 blur-3xl" />
-      <div className="absolute -right-40 top-1/4 h-96 w-96 animate-pulse rounded-full bg-slate-400/10 blur-3xl" style={{ animationDelay: "1s" }} />
-      <div className="absolute -bottom-40 left-1/3 h-80 w-80 animate-pulse rounded-full bg-blue-600/10 blur-3xl" style={{ animationDelay: "2s" }} />
-      
-      {/* Grid pattern overlay */}
-      <div 
-        className="absolute inset-0 opacity-[0.015]"
-        style={{
-          backgroundImage: `linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px)`,
-          backgroundSize: "60px 60px"
-        }}
-      />
+    <div className="tech-field absolute inset-0 -z-10 overflow-hidden" onMouseMove={handlePointer} aria-hidden="true">
+      <div className="tech-atmosphere absolute inset-0" />
+      <div className="tech-grid absolute inset-0" />
+      <div className="tech-orbit tech-orbit-one" />
+      <div className="tech-orbit tech-orbit-two" />
+      <div className="tech-core">
+        <div className="tech-slab tech-slab-back"><span /></div>
+        <div className="tech-slab tech-slab-mid"><span /></div>
+        <div className="tech-slab tech-slab-front">
+          <i /><i /><i /><b />
+        </div>
+      </div>
+      <div className="tech-node node-one" /><div className="tech-node node-two" /><div className="tech-node node-three" />
+      <div className="tech-glow tech-glow-one" /><div className="tech-glow tech-glow-two" />
     </div>
   )
 }

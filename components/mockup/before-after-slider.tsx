@@ -75,7 +75,7 @@ export function BeforeAfterSlider({
   return (
     <div
       ref={containerRef}
-      className="relative overflow-hidden rounded-xl border border-border/50 bg-muted shadow-lg select-none"
+      className="relative overflow-hidden rounded-2xl border border-white/90 bg-muted shadow-[0_38px_90px_rgba(48,91,111,.22),inset_0_1px_rgba(255,255,255,1)] ring-1 ring-[#9ac2ce]/20 select-none [transform:perspective(1400px)_rotateX(1.5deg)]"
       style={{ aspectRatio }}
       onClick={handleRailClick}
     >
@@ -111,7 +111,7 @@ export function BeforeAfterSlider({
         {beforeLabel}
       </div>
       <div
-        className="pointer-events-none absolute right-4 top-4 rounded-full bg-blue-700 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm transition-opacity"
+        className="pointer-events-none absolute right-4 top-4 rounded-full bg-gradient-to-r from-[#29495b] to-[#6e9bad] px-3 py-1 text-xs font-medium text-white shadow-lg backdrop-blur-sm transition-opacity"
         style={{ opacity: position < 88 ? 1 : 0 }}
       >
         {afterLabel}
@@ -133,7 +133,7 @@ export function BeforeAfterSlider({
             e.stopPropagation()
             setIsDragging(true)
           }}
-          className="absolute top-1/2 left-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize items-center justify-center rounded-full border-2 border-white bg-blue-700 shadow-lg transition-transform hover:scale-110 active:scale-95"
+          className="absolute top-1/2 left-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize items-center justify-center rounded-full border-2 border-white bg-gradient-to-br from-[#efd994] via-[#c59a4e] to-[#8c6728] shadow-[0_10px_28px_rgba(115,83,35,.3)] transition-transform hover:scale-110 active:scale-95"
         >
           <svg className="h-5 w-5 text-white" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M8 7l-5 5 5 5M16 7l5 5-5 5" />

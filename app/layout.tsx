@@ -1,9 +1,17 @@
-import type { Metadata } from 'next'
-import { Geist } from 'next/font/google'
+import type { Metadata, Viewport } from 'next'
+import { Fraunces, Geist } from 'next/font/google'
 import './globals.css'
 import CrispChat from '@/components/crisp-chat'
 
-const geist = Geist({ subsets: ["latin"] })
+const geist = Geist({ subsets: ["latin"], variable: "--font-geist-sans" })
+const fraunces = Fraunces({ subsets: ["latin"], variable: "--font-fraunces" })
+
+export const viewport: Viewport = {
+  colorScheme: "light",
+  themeColor: "#eef5f7",
+  width: "device-width",
+  initialScale: 1,
+}
 
 export const metadata: Metadata = {
   title: 'Next Horizons | Software & Web Design',
@@ -22,7 +30,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="bg-background">
-      <body className={`${geist.className} antialiased`}>
+      <body className={`${geist.variable} ${fraunces.variable} font-sans antialiased`}>
         {children}
         <CrispChat />
       </body>

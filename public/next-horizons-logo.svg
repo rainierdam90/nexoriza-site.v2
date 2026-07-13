@@ -1,0 +1,16 @@
+<svg width="600" height="130" viewBox="0 0 600 130" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Next Horizons — Financial Crime &amp; Compliance Consultancy">
+  <title>Next Horizons</title>
+  <!-- Mark -->
+  <g transform="translate(8 17) scale(0.8)">
+    <rect x="0" y="0" width="120" height="120" rx="26" fill="#122647"/>
+    <rect x="26" y="34" width="11" height="52" fill="#F4EFE2"/>
+    <rect x="58.5" y="34" width="11" height="52" fill="#F4EFE2"/>
+    <rect x="83" y="34" width="11" height="52" fill="#F4EFE2"/>
+    <polygon points="26,34 37,34 69.5,86 58.5,86" fill="#F4EFE2"/>
+    <rect x="58.5" y="54.5" width="35.5" height="11" fill="#C8A24B"/>
+  </g>
+  <!-- Wordmark -->
+  <text x="124" y="62" fill="#122647" font-family="Fraunces, Georgia, 'Times New Roman', serif" font-size="40" font-weight="600" letter-spacing="-0.5">Next Horizons</text>
+  <!-- Tagline -->
+  <text x="126" y="88" fill="#54607A" font-family="Geist, Arial, sans-serif" font-size="12" font-weight="500" letter-spacing="2.8">FINANCIAL CRIME &amp; COMPLIANCE CONSULTANCY</text>
+</svg>
