@@ -1,5 +1,9 @@
 import { NextRequest, NextResponse } from "next/server"
 
+// Form submissions are relayed via FormSubmit (formsubmit.co) — the same
+// provider used for www.nexthorizonsglobal.com. No API key required; the
+// recipient address must be activated once with FormSubmit (already done
+// for rainier@nexthorizonsglobal.com).
 export async function POST(req: NextRequest) {
   try {
     const formData = await req.formData()
@@ -17,9 +21,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 })
     }
 
-    const toEmail   = process.env.CONTACT_EMAIL ?? "rainier@nexthorizonsglobal.com"
-    const fromEmail = process.env.CONTACT_FROM  ?? "contact@nexthorizons.ae"
-    const apiKey    = process.env.RESEND_API_KEY
+    const toEmail = process.env.CONTACT_EMAIL ?? "rainier@nexthorizonsglobal.com"
 
     const isMockupRequest = service === "Free Redesign Mockup Request"
     const isCallBooking   = service?.startsWith("Call Booking")
@@ -42,92 +44,42 @@ export async function POST(req: NextRequest) {
     }
     const timeSlotLabel = timeSlotLabels[timeSlot] || timeSlot
 
-    const textLines = [
-      isMockupRequest
-        ? "Free Redesign Mockup Request — Next Horizons"
-        : isCallBooking
-          ? "Call Booking Request — Next Horizons"
-          : "New contact form submission — Next Horizons",
-      "",
-      `Name:     ${name}`,
-      ...(company       ? [`Company:  ${company}`]       : []),
-      `Email:    ${email}`,
-      ...(phone         ? [`Phone:    ${phone}`]         : []),
-      ...(website       ? [`Website:  ${website}`]       : []),
-      `Topic:    ${service || "Not specified"}`,
-      ...(preferredDate ? [`Date:     ${preferredDate}`] : []),
-      ...(timeSlotLabel ? [`Time:     ${timeSlotLabel}`] : []),
-      "",
-      isCallBooking ? "Notes:" : "Message / Wishes:",
-      message || "(none provided)",
-      "",
-      "---",
-      "Sent via nexthorizons.ae",
-    ]
+    const payload: Record<string, string> = {
+      _subject:  subject,
+      _template: "table",
+      _replyto:  email,
+      Type:      isMockupRequest ? "Free Redesign Mockup Request" : isCallBooking ? "Call Booking Request" : "Contact form enquiry",
+      Name:      name,
+      ...(company       ? { Company: company }              : {}),
+      Email:     email,
+      ...(phone         ? { Phone: phone }                  : {}),
+      ...(website       ? { Website: website }              : {}),
+      Topic:     service || "Not specified",
+      ...(preferredDate ? { "Preferred date": preferredDate } : {}),
+      ...(timeSlotLabel ? { "Time slot": timeSlotLabel }      : {}),
+      Message:   message || "(none provided)",
+    }
 
-    const text = textLines.join("\n")
+    // FormSubmit requires Origin/Referer headers and activates recipients
+    // per website domain (one-time "Activate Form" email on first use).
+    const host   = req.headers.get("x-forwarded-host") ?? req.headers.get("host") ?? "rainierdam90-nexoriza-sitev2.vercel.app"
+    const origin = `https://${host}`
 
-    const row = (label: string, value: string) =>
-      `<tr><td style="padding:8px 0;color:#64748b;width:90px">${label}</td><td style="padding:8px 0">${value}</td></tr>`
+    const res = await fetch(`https://formsubmit.co/ajax/${toEmail}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept":       "application/json",
+        "Origin":       origin,
+        "Referer":      `${origin}/contact`,
+      },
+      body: JSON.stringify(payload),
+    })
 
-    const rows = [
-      row("Name", `<strong>${name}</strong>`),
-      company       ? row("Company", company)                                                      : "",
-      row("Email", `<a href="mailto:${email}" style="color:#1d4ed8">${email}</a>`),
-      phone         ? row("Phone",   `<a href="tel:${phone}" style="color:#1d4ed8">${phone}</a>`)  : "",
-      website       ? row("Website", `<a href="${website}" style="color:#1d4ed8">${website}</a>`)  : "",
-      row("Topic", service || "Not specified"),
-      preferredDate ? row("Date", preferredDate) : "",
-      timeSlotLabel ? row("Time", timeSlotLabel) : "",
-    ].filter(Boolean).join("")
-
-    const html = `
-      <div style="font-family:Inter,sans-serif;max-width:560px;margin:0 auto;color:#0f172a">
-        <div style="background:linear-gradient(135deg,#1d4ed8,#475569);padding:24px 32px;border-radius:12px 12px 0 0">
-          <p style="margin:0;font-size:13px;color:#bfdbfe;font-weight:600;letter-spacing:.05em;text-transform:uppercase">
-            ${isMockupRequest ? "Free Mockup Request" : isCallBooking ? "Call Booking Request" : "New Enquiry"} — Next Horizons
-          </p>
-        </div>
-        <div style="background:#f8fafc;padding:32px;border:1px solid #e2e8f0;border-top:none;border-radius:0 0 12px 12px">
-          <table style="width:100%;border-collapse:collapse;font-size:14px">${rows}</table>
-          <hr style="border:none;border-top:1px solid #e2e8f0;margin:20px 0"/>
-          <p style="margin:0 0 8px;color:#64748b;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.05em">
-            ${isMockupRequest ? "Wishes / Notes" : isCallBooking ? "Notes" : "Message"}
-          </p>
-          <p style="margin:0;white-space:pre-wrap;line-height:1.7;font-size:15px">${(message || "(none provided)").replace(/</g,"&lt;").replace(/>/g,"&gt;")}</p>
-          <hr style="border:none;border-top:1px solid #e2e8f0;margin:24px 0"/>
-          <p style="margin:0;font-size:12px;color:#94a3b8">Reply directly to this email to respond to ${name}.</p>
-        </div>
-      </div>`
-
-    if (apiKey) {
-      const res = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: {
-          "Authorization": `Bearer ${apiKey}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          from:     fromEmail,
-          to:       [toEmail],
-          reply_to: email,
-          subject,
-          text,
-          html,
-        }),
-      })
-
-      if (!res.ok) {
-        const err = await res.text()
-        console.error("[Contact] Resend error:", err)
-        return NextResponse.json({ error: "Failed to send email" }, { status: 500 })
-      }
-    } else {
-      console.error("[Contact] ⚠️  RESEND_API_KEY not set — email NOT sent.\nAdd RESEND_API_KEY to the environment (Vercel → Settings → Environment Variables).")
-      console.error(`[Contact] Lost submission that would have gone to: ${toEmail}\n${text}`)
-      if (process.env.NODE_ENV === "production") {
-        return NextResponse.json({ error: "Email service not configured" }, { status: 500 })
-      }
+    const data = await res.json().catch(() => null)
+    if (!res.ok || !data || String(data.success) !== "true") {
+      console.error("[Contact] FormSubmit error:", res.status, JSON.stringify(data))
+      return NextResponse.json({ error: "Failed to send email" }, { status: 500 })
     }
 
     return NextResponse.json({ success: true })
