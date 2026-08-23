@@ -123,8 +123,11 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: "Failed to send email" }, { status: 500 })
       }
     } else {
-      console.log("[Contact] ⚠️  RESEND_API_KEY not set — email not sent.\nAdd RESEND_API_KEY to .env.local")
-      console.log(`[Contact] Would send to: ${toEmail}\n${text}`)
+      console.error("[Contact] ⚠️  RESEND_API_KEY not set — email NOT sent.\nAdd RESEND_API_KEY to the environment (Vercel → Settings → Environment Variables).")
+      console.error(`[Contact] Lost submission that would have gone to: ${toEmail}\n${text}`)
+      if (process.env.NODE_ENV === "production") {
+        return NextResponse.json({ error: "Email service not configured" }, { status: 500 })
+      }
     }
 
     return NextResponse.json({ success: true })
