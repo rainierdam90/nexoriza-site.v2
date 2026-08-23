@@ -14,7 +14,7 @@ export function Footer() {
               <Logo className="h-11 text-foreground" />
             </Link>
             <p className="mt-4 max-w-sm text-sm text-muted-foreground leading-relaxed">
-              AI-powered website redesign and intelligent due diligence software — built for organisations that expect measurable results.
+              AI-powered website redesign and intelligent due diligence software for businesses in the UAE and internationally.
             </p>
             <div className="mt-6 space-y-2">
               <a href="mailto:contact@nexthorizons.ae" className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground">

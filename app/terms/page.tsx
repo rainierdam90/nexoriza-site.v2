@@ -25,7 +25,7 @@ export default function TermsPage() {
                 Terms of Service
               </h1>
               <p className="mt-6 text-sm text-muted-foreground">
-                Last updated: April 2026
+                Last updated: August 2026
               </p>
             </div>
           </div>
@@ -37,158 +37,240 @@ export default function TermsPage() {
 
               <div>
                 <p>
-                  These Terms of Service (the &ldquo;Terms&rdquo;) govern your access to and use of the Next Horizons website at nexthorizons.ae (the &ldquo;Website&rdquo;) and the services provided by Next Horizons FZCO (&ldquo;Next Horizons&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;). By accessing the Website or engaging our services, you agree to be bound by these Terms. If you do not agree, please do not use the Website or our services.
+                  These Terms of Service apply to your use of the Next Horizons website and services provided by Next Horizons FZCO (&ldquo;Next Horizons&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo; or &ldquo;our&rdquo;).
+                </p>
+                <p className="mt-4">
+                  By using the website or engaging our services, you agree to these Terms.
                 </p>
               </div>
 
               <div>
                 <h2 className="text-2xl font-semibold text-foreground">1. About Us</h2>
                 <p className="mt-4">
-                  Next Horizons FZCO is a company incorporated in the International Free Zone Authority (IFZA), registered at IFZA Business Park 44824, Dubai Silicon Oasis, Dubai, United Arab Emirates. We provide AI-assisted website redesign services and due diligence software for professional and regulated organisations.
+                  Next Horizons FZCO is incorporated in the International Free Zone Authority (IFZA) and registered at IFZA Business Park 44824, Dubai Silicon Oasis, Dubai, United Arab Emirates.
+                </p>
+                <p className="mt-4">
+                  We provide AI-assisted website redesign services and due diligence software for professional and regulated organisations.
                 </p>
               </div>
 
               <div>
                 <h2 className="text-2xl font-semibold text-foreground">2. Scope of Services</h2>
-                <p className="mt-4">Our services include, but are not limited to:</p>
-                <ul className="mt-3 list-disc space-y-2 pl-6">
-                  <li>Website design, redesign, development, deployment, and post-launch support.</li>
-                  <li>The supply, configuration, and ongoing support of our due diligence software platform.</li>
-                  <li>Related advisory, training, and scoping activities.</li>
-                </ul>
                 <p className="mt-4">
-                  The specific scope, deliverables, timelines, and fees for any engagement will be set out in a separate written agreement, statement of work, or quotation (the &ldquo;Engagement Agreement&rdquo;). In the event of conflict between these Terms and an Engagement Agreement, the Engagement Agreement prevails.
+                  Our services may include website design, redesign, development, deployment and support; provision, configuration and support of our due diligence software; and related advisory, training and scoping work.
+                </p>
+                <p className="mt-4">
+                  The specific work, deliverables, timing and fees for an individual project will be agreed separately in a quotation, statement of work or other written agreement.
+                </p>
+                <p className="mt-4">
+                  Where that agreement conflicts with these general Terms, the specific project agreement will take priority.
                 </p>
               </div>
 
               <div>
                 <h2 className="text-2xl font-semibold text-foreground">3. Quotations and Mockups</h2>
                 <p className="mt-4">
-                  Free design concepts and fixed-price quotations provided through our mockup request process are offered in good faith and without obligation on either party. Quotations are valid for thirty (30) days from the date of issue unless stated otherwise. A contractual relationship is formed only upon your written acceptance of our quotation or execution of an Engagement Agreement.
+                  Free homepage design concepts and quotations provided as part of our mockup process are provided without obligation on either side.
+                </p>
+                <p className="mt-4">
+                  The free concept is intended to demonstrate an initial visual direction and is not a complete or production-ready website.
+                </p>
+                <p className="mt-4">
+                  Unless stated otherwise, quotations remain valid for 30 days.
+                </p>
+                <p className="mt-4">
+                  A contractual relationship starts only once you accept a quotation in writing or enter into a separate Engagement Agreement with us.
                 </p>
               </div>
 
               <div>
                 <h2 className="text-2xl font-semibold text-foreground">4. Price Match Commitment</h2>
                 <p className="mt-4">
-                  We offer to match a lower price for comparable website redesign services, subject to the following conditions:
+                  We offer a price-match commitment for comparable website redesign services.
                 </p>
-                <ul className="mt-3 list-disc space-y-2 pl-6">
-                  <li>The competing quotation must relate to a service of comparable scope, quality, deliverables, technology stack, and post-launch support to those offered by Next Horizons.</li>
-                  <li>The competing price must fall within market-conforming pricing ranges for professional AI-assisted website redesign in the relevant market. Quotations that fall materially below prevailing market rates — including but not limited to those from providers operating without established credentials, sustainable business models, or the quality standards that comparable delivery requires — will not qualify for price matching.</li>
-                  <li>Written evidence of the competing quotation, including scope, deliverables, and pricing, must be provided in a form that allows us to assess comparability in good faith.</li>
-                  <li>The quotation must come from a clearly identifiable third-party provider offering services on arm&rsquo;s-length commercial terms. Internal estimates, do-it-yourself cost projections, and promotional or time-limited offers are not eligible.</li>
-                  <li>We reserve the right, acting reasonably, to determine in our sole discretion whether a competing quotation meets these conditions, and to decline to match a price where doing so would require compromising scope, quality, or the standards set out in an Engagement Agreement.</li>
-                </ul>
                 <p className="mt-4">
-                  This commitment is offered as a gesture of confidence in our pricing and does not constitute a legally binding guarantee to match every lower quotation presented.
+                  For a competing quotation to qualify, it must cover a genuinely comparable scope, quality, deliverables, technology and level of post-launch support.
+                </p>
+                <p className="mt-4">
+                  The price must also fall within reasonable market pricing for professional AI-assisted website redesign.
+                </p>
+                <p className="mt-4">
+                  You may be asked to provide the competing quotation, including enough information for us to compare the scope and pricing.
+                </p>
+                <p className="mt-4">
+                  The quotation must come from an identifiable independent provider and must represent a genuine commercial offer. Internal estimates, DIY calculations and temporary promotional offers do not qualify.
+                </p>
+                <p className="mt-4">
+                  We reserve the right to determine whether a quotation is genuinely comparable and may decline to match a price where doing so would require us to materially reduce the agreed scope, quality or delivery standard.
+                </p>
+                <p className="mt-4">
+                  The price-match commitment reflects our confidence in our pricing but does not create an unconditional obligation to match every lower quotation.
                 </p>
               </div>
 
               <div>
                 <h2 className="text-2xl font-semibold text-foreground">5. Fees and Payment</h2>
                 <p className="mt-4">
-                  Fees for our services will be set out in the applicable quotation or Engagement Agreement. Unless stated otherwise, invoices are payable within fourteen (14) days of the invoice date, in the currency stated on the invoice. We reserve the right to suspend work or delivery in the event of overdue payment, after providing reasonable written notice. Fees are exclusive of applicable taxes, including VAT where applicable, which will be added to invoices as required by law.
+                  Fees are set out in the relevant quotation or project agreement.
+                </p>
+                <p className="mt-4">
+                  Unless agreed otherwise, invoices are payable within 14 days in the currency shown on the invoice.
+                </p>
+                <p className="mt-4">
+                  If payment becomes overdue, we may suspend work after providing reasonable written notice.
+                </p>
+                <p className="mt-4">
+                  Applicable taxes, including VAT where required, are charged in addition to the stated fees unless expressly included.
                 </p>
               </div>
 
               <div>
                 <h2 className="text-2xl font-semibold text-foreground">6. Client Responsibilities</h2>
-                <p className="mt-4">To enable us to deliver our services effectively, you agree to:</p>
-                <ul className="mt-3 list-disc space-y-2 pl-6">
-                  <li>Provide accurate, complete, and timely information, materials, access, and approvals.</li>
-                  <li>Nominate a single point of contact with authority to provide feedback and approvals.</li>
-                  <li>Ensure that any content or materials you supply to us do not infringe third-party rights or applicable law.</li>
-                  <li>Comply with all applicable laws and regulations in your use of our services and any delivered work.</li>
-                </ul>
+                <p className="mt-4">
+                  To allow us to provide the agreed services, clients are responsible for providing accurate and timely information, materials, access, feedback and approvals.
+                </p>
+                <p className="mt-4">
+                  Clients are also responsible for making sure materials supplied to us can legally be used and that their use of our services and deliverables complies with applicable law.
+                </p>
               </div>
 
               <div>
                 <h2 className="text-2xl font-semibold text-foreground">7. Intellectual Property</h2>
                 <p className="mt-4">
-                  Upon full payment of the applicable fees, you receive ownership or a broad licence (as specified in the Engagement Agreement) over the final deliverables produced specifically for you. We retain ownership of pre-existing materials, tools, libraries, frameworks, methodologies, and generic code that we use to produce those deliverables, and we grant you a non-exclusive licence to use such pre-existing materials to the extent they are embedded in your deliverables.
+                  Once all applicable fees have been paid, you receive the ownership rights or licence to the final deliverables specified in the relevant project agreement.
                 </p>
                 <p className="mt-4">
-                  You retain ownership of any content, trademarks, and other materials you supply to us, and you grant us a non-exclusive licence to use such materials for the purpose of performing our services.
+                  Next Horizons retains ownership of existing tools, software components, frameworks, libraries, methodologies and generic code used in producing the work.
+                </p>
+                <p className="mt-4">
+                  Where these components are included in your final deliverables, you receive the rights required to use them as part of those deliverables.
+                </p>
+                <p className="mt-4">
+                  You retain ownership of content, trademarks and other materials you provide to us and allow us to use those materials where needed to provide the agreed services.
                 </p>
               </div>
 
               <div>
                 <h2 className="text-2xl font-semibold text-foreground">8. Due Diligence Software</h2>
                 <p className="mt-4">
-                  Our due diligence software is provided on the terms set out in the applicable software licence or Engagement Agreement. The platform is designed to assist compliance professionals and does not constitute legal, regulatory, or compliance advice. You remain solely responsible for compliance with the laws, regulations, and professional standards that apply to your operations, including but not limited to anti-money-laundering, counter-terrorist-financing, and sanctions obligations. Outputs of the platform are tools that support — but do not replace — professional judgement.
+                  Our due diligence software is provided under the applicable licence or project agreement.
+                </p>
+                <p className="mt-4">
+                  The software is intended to assist compliance professionals. It does not constitute legal, regulatory or compliance advice.
+                </p>
+                <p className="mt-4">
+                  Your organisation remains responsible for meeting its own legal and regulatory obligations, including requirements relating to AML, counter-terrorist financing and sanctions.
+                </p>
+                <p className="mt-4">
+                  Software output is intended to support professional judgement, not replace it.
+                </p>
+                <p className="mt-4">
+                  The software is intended to operate as a standalone application unless wider integration is expressly included in a separate written scope.
                 </p>
               </div>
 
               <div>
                 <h2 className="text-2xl font-semibold text-foreground">9. Confidentiality</h2>
                 <p className="mt-4">
-                  Each party agrees to keep confidential any non-public information disclosed by the other party in connection with our services, and to use that information only for the purpose of the engagement. This obligation continues for three (3) years after the end of the engagement, or longer where required by applicable law.
+                  Both parties agree to keep non-public information received in connection with an engagement confidential and to use it only for the purposes of that engagement.
+                </p>
+                <p className="mt-4">
+                  Unless applicable law requires a longer period, this obligation continues for three years after the engagement ends.
                 </p>
               </div>
 
               <div>
                 <h2 className="text-2xl font-semibold text-foreground">10. Privacy</h2>
                 <p className="mt-4">
-                  Our handling of personal data is governed by our <a href="/privacy" className="text-blue-600 hover:underline">Privacy Policy</a>, which forms part of these Terms.
+                  Our handling of personal information is described in our <a href="/privacy" className="text-blue-600 hover:underline">Privacy Policy</a>, which forms part of these Terms.
                 </p>
               </div>
 
               <div>
                 <h2 className="text-2xl font-semibold text-foreground">11. Warranties and Disclaimers</h2>
                 <p className="mt-4">
-                  We will perform our services with reasonable skill and care, in accordance with prevailing professional standards. Except as expressly stated in these Terms or an Engagement Agreement, all services, deliverables, and the Website are provided on an &ldquo;as is&rdquo; and &ldquo;as available&rdquo; basis, and we disclaim all other warranties, representations, and conditions, whether express or implied, to the fullest extent permitted by law. This includes any implied warranties of merchantability, fitness for a particular purpose, and non-infringement.
+                  We provide our services with reasonable skill and care and in line with generally accepted professional standards.
                 </p>
                 <p className="mt-4">
-                  We make no guarantees regarding specific business outcomes. Performance metrics, conversion figures, and efficiency indicators presented on our Website reflect typical outcomes across past engagements and are illustrative only. Actual results will vary based on your starting point, project scope, configuration, and market conditions.
+                  Except where expressly agreed otherwise, the website, services and deliverables are provided on an &ldquo;as is&rdquo; and &ldquo;as available&rdquo; basis to the maximum extent permitted by law.
+                </p>
+                <p className="mt-4">
+                  We do not guarantee a particular commercial result.
+                </p>
+                <p className="mt-4">
+                  Any conversion, performance or efficiency figures shown on our website are estimates, illustrative outcomes or third-party research unless expressly supported by project-specific testing. Actual results depend on factors including the client&rsquo;s starting point, scope, configuration and market conditions.
                 </p>
               </div>
 
               <div>
                 <h2 className="text-2xl font-semibold text-foreground">12. Limitation of Liability</h2>
                 <p className="mt-4">
-                  To the maximum extent permitted by law, our total aggregate liability arising out of or in connection with these Terms or any Engagement Agreement — whether in contract, tort (including negligence), or otherwise — shall not exceed the fees paid by you to us under the relevant Engagement Agreement in the twelve (12) months preceding the event giving rise to the claim.
+                  To the maximum extent permitted by law, our total liability relating to an engagement will not exceed the fees paid to us under the relevant engagement during the 12 months before the event giving rise to the claim.
                 </p>
                 <p className="mt-4">
-                  In no event will we be liable for any indirect, incidental, special, consequential, or punitive damages, including loss of profits, loss of revenue, loss of business, loss of data, or business interruption, even if we have been advised of the possibility of such damages.
+                  We are not liable for indirect or consequential losses, including loss of profits, revenue, business or data, or business interruption, to the extent permitted by law.
                 </p>
                 <p className="mt-4">
-                  Nothing in these Terms excludes or limits liability for fraud, wilful misconduct, or any other liability that cannot lawfully be excluded or limited.
+                  Nothing in these Terms limits liability where it cannot legally be limited, including liability arising from fraud or wilful misconduct.
                 </p>
               </div>
 
               <div>
                 <h2 className="text-2xl font-semibold text-foreground">13. Termination</h2>
                 <p className="mt-4">
-                  Either party may terminate an engagement for material breach that has not been cured within thirty (30) days of written notice. On termination, you will pay for all services performed up to the date of termination, and each party will return or destroy confidential information of the other party at the disclosing party&rsquo;s request. Sections that by their nature are intended to survive termination shall do so.
+                  Either party may terminate an engagement following a material breach that has not been corrected within 30 days after written notice.
+                </p>
+                <p className="mt-4">
+                  On termination, the client remains responsible for payment for work performed up to the termination date.
+                </p>
+                <p className="mt-4">
+                  Each party will return or destroy confidential information where reasonably requested by the party that provided it.
+                </p>
+                <p className="mt-4">
+                  Provisions that are intended to continue after termination will remain in effect.
                 </p>
               </div>
 
               <div>
                 <h2 className="text-2xl font-semibold text-foreground">14. Force Majeure</h2>
                 <p className="mt-4">
-                  Neither party is liable for failure or delay in performance caused by events beyond its reasonable control, including natural disasters, acts of government, failure of telecommunications or utilities, cyberattacks, or public-health emergencies, provided the affected party gives prompt notice and uses reasonable efforts to resume performance.
+                  Neither party is responsible for a failure or delay caused by circumstances outside its reasonable control.
+                </p>
+                <p className="mt-4">
+                  This may include natural disasters, government action, major telecommunications or utility failures, cyberattacks and public-health emergencies.
+                </p>
+                <p className="mt-4">
+                  The affected party should notify the other party and take reasonable steps to resume performance as soon as practical.
                 </p>
               </div>
 
               <div>
                 <h2 className="text-2xl font-semibold text-foreground">15. Governing Law and Jurisdiction</h2>
                 <p className="mt-4">
-                  These Terms are governed by the laws of the United Arab Emirates as applicable in the Emirate of Dubai. Any dispute arising out of or in connection with these Terms or our services shall be subject to the exclusive jurisdiction of the competent courts of Dubai, without prejudice to any mandatory provisions of applicable law.
+                  These Terms are governed by the laws of the United Arab Emirates as applicable in the Emirate of Dubai.
+                </p>
+                <p className="mt-4">
+                  Disputes relating to these Terms or our services are subject to the exclusive jurisdiction of the competent courts of Dubai, subject to any mandatory legal requirements that apply.
                 </p>
               </div>
 
               <div>
                 <h2 className="text-2xl font-semibold text-foreground">16. Changes to These Terms</h2>
                 <p className="mt-4">
-                  We may update these Terms from time to time. The most current version will always be posted on this page, with the &ldquo;Last updated&rdquo; date above reflecting the date of the most recent revision. Your continued use of the Website or our services following any such update constitutes acceptance of the updated Terms.
+                  We may update these Terms from time to time.
+                </p>
+                <p className="mt-4">
+                  The current version will be published on this page with the date of the latest revision.
+                </p>
+                <p className="mt-4">
+                  Continued use of our website following an update constitutes acceptance of the revised website Terms. Changes do not alter an existing project agreement unless agreed separately in writing.
                 </p>
               </div>
 
               <div>
                 <h2 className="text-2xl font-semibold text-foreground">17. Contact</h2>
                 <p className="mt-4">
-                  For questions about these Terms, please contact us at:
+                  Questions about these Terms can be sent to:
                 </p>
                 <div className="mt-4 rounded-xl border border-border/50 bg-foreground/[0.02] p-5">
                   <p className="text-sm font-semibold text-foreground">Next Horizons FZCO</p>

@@ -18,11 +18,11 @@ export function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden items-center gap-8 md:flex">
-          <Link href="/services/website-redesign" className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
-            Website Redesign
-          </Link>
           <Link href="/services/due-diligence" className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
             Due Diligence
+          </Link>
+          <Link href="/services/website-redesign" className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
+            Website Redesign
           </Link>
           <Link href="/about" className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
             About
@@ -48,8 +48,8 @@ export function Header() {
         <div className="border-t border-border/50 bg-background/95 backdrop-blur-xl md:hidden">
           <nav className="flex flex-col gap-4 px-4 py-6">
             {[
-              { href: "/services/website-redesign", label: "Website Redesign" },
               { href: "/services/due-diligence", label: "Due Diligence" },
+              { href: "/services/website-redesign", label: "Website Redesign" },
               { href: "/about", label: "About" },
               { href: "/contact", label: "Contact" },
             ].map((item) => (

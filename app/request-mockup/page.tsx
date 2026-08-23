@@ -8,7 +8,6 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { CheckCircle, Send, Globe, User, Mail, MessageSquare } from "lucide-react"
 import { useState } from "react"
-import type { Metadata } from "next"
 
 export default function RequestMockupPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -57,7 +56,7 @@ export default function RequestMockupPage() {
                 </span>
               </h1>
               <p className="mt-6 text-lg text-muted-foreground">
-                Share your current website and we will create a free design concept — with a clear, fixed price included. No obligation, no hidden costs.
+                Send us your current website and we will prepare a free homepage redesign concept for it. You will also receive a clear, fixed price for completing the full website. If you like what we have created, we can continue. If not, there is nothing to pay.
               </p>
             </div>
           </div>
@@ -72,10 +71,10 @@ export default function RequestMockupPage() {
                 <h2 className="text-xl font-semibold text-foreground">What Happens Next</h2>
                 <ol className="mt-6 space-y-5">
                   {[
-                    { n: "1", title: "Submit your details", body: "Fill in your current website URL, name, email, and any specific wishes you have." },
-                    { n: "2", title: "We review your site", body: "Our team analyses your current website and prepares a free design concept tailored to your brand." },
-                    { n: "3", title: "You receive a mockup + price", body: "Within 48 hours you receive a visual concept and a clear, fixed price. No vague quotes." },
-                    { n: "4", title: "You decide", body: "If you like it, we build it. No pressure. You can also choose to implement it yourself." },
+                    { n: "1", title: "Submit Your Details", body: "Send us your current website, your contact details and anything specific you would like us to take into account." },
+                    { n: "2", title: "We Review Your Website", body: "We look at your existing design, content, structure and how the website currently works for visitors. We then prepare a new homepage design direction based on your business and brand." },
+                    { n: "3", title: "You Receive the Mockup + Price", body: "Within 48 hours, you receive your first homepage concept together with a clear, fixed price for completing the redesign. The concept shows you the visual direction we would take. It is not a complete or production-ready website. No open-ended hourly billing and no vague estimate of what it may eventually cost." },
+                    { n: "4", title: "You Decide", body: "If you like what we have created, we build the complete website. There is no pressure to proceed. You can also choose to receive the finished code and implement the website yourself." },
                   ].map((step) => (
                     <li key={step.n} className="flex gap-4">
                       <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-blue-700 to-slate-500 text-sm font-bold text-white">
@@ -93,9 +92,9 @@ export default function RequestMockupPage() {
                   <div className="flex items-start gap-3">
                     <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-blue-600" />
                     <div>
-                      <p className="font-semibold text-foreground">Guaranteed lowest price</p>
+                      <p className="font-semibold text-foreground">Our Price Match Commitment</p>
                       <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
-                        We are committed to offering the most competitive pricing for professional AI-driven website redesign. Found a lower price for comparable quality? We will match it.
+                        Our aim is to offer highly competitive pricing for professional AI-powered website redesign. If you receive a lower price for genuinely comparable work and quality, send us the quotation. We will review the scope, deliverables, technology and support included and, where possible, match it.
                       </p>
                     </div>
                   </div>
@@ -124,7 +123,7 @@ export default function RequestMockupPage() {
                     <form onSubmit={handleSubmit} className="relative space-y-6">
                       <div>
                         <h3 className="text-lg font-semibold text-foreground">Request Your Free Mockup</h3>
-                        <p className="mt-1 text-sm text-muted-foreground">Takes 2 minutes. We respond within 48 hours.</p>
+                        <p className="mt-1 text-sm text-muted-foreground">It takes around two minutes to submit your request. We aim to send your first homepage concept within 48 hours.</p>
                       </div>
 
                       <div className="space-y-2">
@@ -140,7 +139,7 @@ export default function RequestMockupPage() {
                           required
                           className="border-border/50 bg-background/50"
                         />
-                        <p className="text-xs text-muted-foreground">We need this to prepare your personalised design concept.</p>
+                        <p className="text-xs text-muted-foreground">We use this to review your current website and prepare the redesign.</p>
                       </div>
 
                       <div className="grid gap-4 sm:grid-cols-2">
@@ -181,7 +180,7 @@ export default function RequestMockupPage() {
                         <Textarea
                           id="message"
                           name="message"
-                          placeholder="Tell us what you have in mind — style preferences, colours, functionality, pages, or anything else. The more context, the better the concept."
+                          placeholder="Tell us if there is anything you specifically want to change, improve or keep."
                           rows={5}
                           className="border-border/50 bg-background/50 resize-none"
                         />
@@ -199,11 +198,11 @@ export default function RequestMockupPage() {
                         className="w-full bg-gradient-to-r from-blue-700 to-slate-500 text-white hover:from-blue-800 hover:to-slate-600"
                         size="lg"
                       >
-                        {isSubmitting ? "Sending..." : "Request My Free Mockup →"}
+                        {isSubmitting ? "Sending..." : "Request My Free Mockup"}
                       </Button>
 
                       <p className="text-center text-xs text-muted-foreground">
-                        Free of charge, no commitment required. We handle your data with care and never share it with third parties.
+                        Free of charge and without any obligation to proceed. The mockup is an initial homepage design concept, not a complete or production-ready website.
                       </p>
                     </form>
                   )}

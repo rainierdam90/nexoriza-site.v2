@@ -57,13 +57,13 @@ export default function ContactPage() {
                 <span className="text-muted-foreground">Contact</span>
               </div>
               <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-                Let&apos;s Have a{" "}
+                Let’s Discuss What{" "}
                 <span className="bg-gradient-to-r from-blue-700 to-slate-500 bg-clip-text text-transparent">
-                  Straightforward Conversation
+                  You Are Working On
                 </span>
               </h1>
               <p className="mt-6 text-lg text-muted-foreground">
-                Tell us what you are working on. We will give you an honest assessment of whether and how we can help.
+                Tell us what you need and we will tell you whether we think we can help. You do not need to prepare a detailed brief beforehand.
               </p>
             </div>
           </div>
@@ -78,23 +78,27 @@ export default function ContactPage() {
                 <h2 className="text-2xl font-semibold text-foreground">Good Reasons to Get in Touch</h2>
                 <ul className="mt-6 space-y-3">
                   {[
-                    "A free audit of your current website — specific, actionable observations",
-                    "A live due diligence demonstration on an entity of your choice",
-                    "Scoping a redesign project or discussing timelines",
-                    "Understanding whether the due diligence platform fits your workflow",
-                    "Questions about pricing, availability, or process",
+                    { title: "Website redesign", body: "Ask us to review your current website and prepare a free homepage redesign concept." },
+                    { title: "Due diligence demo", body: "See the compliance software carry out a live review using a public entity of your choice." },
+                    { title: "Project scope", body: "Discuss a website redesign, functionality, timing or implementation." },
+                    { title: "Compliance tooling", body: "Find out whether the standalone software can be configured around the due diligence use cases you need." },
+                    { title: "Pricing or availability", body: "Ask us directly about cost, implementation or timing." },
                   ].map((r, i) => (
                     <li key={i} className="flex items-start gap-3 text-muted-foreground">
                       <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-blue-600" />
-                      <span>{r}</span>
+                      <span>
+                        <span className="font-medium text-foreground">{r.title}</span>
+                        <br />
+                        {r.body}
+                      </span>
                     </li>
                   ))}
                 </ul>
 
                 <div className="mt-10 space-y-5">
                   {[
-                    { icon: Mail, label: "Email", value: "contact@nexthorizons.ae", sub: "We respond within one business day", href: "mailto:contact@nexthorizons.ae" },
-                    { icon: MapPin, label: "Address", value: "IFZA Business Park 44824, Dubai Silicon Oasis, Dubai", sub: "Next Horizons FZCO", href: null },
+                    { icon: Mail, label: "Email", value: "contact@nexthorizons.ae", sub: "We normally respond within one business day.", href: "mailto:contact@nexthorizons.ae" },
+                    { icon: MapPin, label: "Address", value: "Next Horizons FZCO", sub: "IFZA Business Park 44824, Dubai Silicon Oasis, Dubai, UAE", href: null },
                     { icon: Clock, label: "Response time", value: "Within one business day", sub: "Sunday to Thursday", href: null },
                   ].map((info) => (
                     <div key={info.label} className="flex items-start gap-4">
@@ -117,10 +121,10 @@ export default function ContactPage() {
                 <div className="mt-10 rounded-xl border border-border/50 bg-gradient-to-br from-blue-600/5 to-slate-400/10 p-6">
                   <div className="flex items-center gap-3">
                     <MessageSquare className="h-5 w-5 text-blue-600" />
-                    <h3 className="font-semibold text-foreground">Prefer to speak directly?</h3>
+                    <h3 className="font-semibold text-foreground">Prefer to Speak Directly?</h3>
                   </div>
                   <p className="mt-2 text-sm text-muted-foreground">
-                    Book a 30-minute introductory call. We will discuss your situation and give you a clear sense of what is possible — without any sales pressure.
+                    Book a 30-minute introductory call. Tell us what you are working on, ask any questions you have and we will give you a clear idea of what we can offer.
                   </p>
                   <Button asChild variant="outline" className="mt-4 gap-2 border-border/50 bg-background/50 backdrop-blur-sm hover:bg-background/80">
                     <Link href="/book-call">
@@ -152,7 +156,7 @@ export default function ContactPage() {
                   <form ref={formRef} onSubmit={handleSubmit} className="relative space-y-6">
                     <div>
                       <h3 className="text-lg font-semibold text-foreground">Send a Message</h3>
-                      <p className="mt-1 text-sm text-muted-foreground">We will respond within one business day.</p>
+                      <p className="mt-1 text-sm text-muted-foreground">We normally respond within one business day.</p>
                     </div>
 
                     <div className="grid gap-5 sm:grid-cols-2">
@@ -193,7 +197,7 @@ export default function ContactPage() {
                       <Textarea
                         id="message"
                         name="message"
-                        placeholder="Describe your situation and what you are looking to achieve. The more context, the better we can help."
+                        placeholder="Tell us briefly what you would like to discuss."
                         rows={5}
                         required
                         className="resize-none border-border/50 bg-background/50"
@@ -210,7 +214,7 @@ export default function ContactPage() {
                       {isSubmitting ? "Sending…" : "Send Message"}
                     </Button>
                     <p className="text-center text-xs text-muted-foreground">
-                      Your information is kept confidential and never shared with third parties.
+                      We handle the information you submit in accordance with our Privacy Policy.
                     </p>
                   </form>
                 )}

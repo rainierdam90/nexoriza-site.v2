@@ -68,7 +68,7 @@ function BookCallForm() {
             <div className="mx-auto max-w-2xl text-center">
               <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border/50 bg-background/50 px-4 py-1.5 text-sm backdrop-blur-sm">
                 <Calendar className="h-3.5 w-3.5 text-blue-600" />
-                <span className="text-muted-foreground">{topic}</span>
+                <span className="text-muted-foreground">Book a Call</span>
               </div>
               <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
                 Book a{" "}
@@ -77,7 +77,7 @@ function BookCallForm() {
                 </span>
               </h1>
               <p className="mt-6 text-lg text-muted-foreground">
-                Share a few details and your preferred time. We will confirm the appointment within one business day with a calendar invite.
+                Choose a time that works for you. You can use the call to discuss a website redesign, see whether our standalone due diligence software could fit your organisation or ask any questions about pricing, implementation or the way we work. There is no need to prepare anything beforehand.
               </p>
             </div>
           </div>
@@ -115,6 +115,21 @@ function BookCallForm() {
                       <p className="font-semibold text-foreground">Availability</p>
                       <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
                         Sunday to Thursday, 9:00–18:00 Gulf Standard Time (GST). We accommodate other time zones on request.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-6 rounded-xl border border-blue-600/20 bg-blue-600/5 p-5">
+                  <div className="flex items-start gap-3">
+                    <Mail className="mt-0.5 h-5 w-5 shrink-0 text-blue-600" />
+                    <div>
+                      <p className="font-semibold text-foreground">Prefer Email?</p>
+                      <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
+                        You can also reach us at:{" "}
+                        <a href="mailto:contact@nexthorizons.ae" className="font-medium text-foreground transition-colors hover:text-blue-600">
+                          contact@nexthorizons.ae
+                        </a>
                       </p>
                     </div>
                   </div>

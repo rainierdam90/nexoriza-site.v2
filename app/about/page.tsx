@@ -12,10 +12,10 @@ export const metadata: Metadata = {
 }
 
 const values = [
-  { icon: Lightbulb, title: "Purposeful Use of AI", description: "We apply AI where it genuinely improves on what was possible before — not because it is expected. Every model and tool we use has a clear reason for being in the workflow." },
-  { icon: ShieldCheck, title: "Integrity in Everything", description: "In compliance and in client relationships, trust is earned through consistency. We are straightforward about what our tools can and cannot do." },
-  { icon: Target, title: "Measured Results", description: "We define success by the outcomes we deliver — conversion rates, review turnaround times, regulatory findings — not by outputs or hours." },
-  { icon: Users, title: "Long-Term Partnerships", description: "We do not consider an engagement complete at the point of delivery. We remain involved, attentive, and invested in the results our clients see." },
+  { icon: Lightbulb, title: "Purposeful Use of AI", description: "We use AI where it can genuinely produce a better or more efficient result. We do not add it simply so that we can call something an AI product." },
+  { icon: ShieldCheck, title: "Integrity", description: "Particularly with compliance technology, it is important to be clear about what software can and cannot do. We would rather be straightforward about a limitation than promise functionality that does not work properly in practice." },
+  { icon: Target, title: "Measurable Results", description: "We are interested in what the end result actually improves. For a website that can mean more enquiries, higher conversion or better performance. For compliance software it can mean less research time, faster reviews and greater consistency." },
+  { icon: Users, title: "Long-Term Relationships", description: "We do not see delivery as the end of a project. Website clients receive post-launch support and we continue to work with software clients as their requirements and processes develop." },
 ]
 
 export default function AboutPage() {
@@ -40,7 +40,7 @@ export default function AboutPage() {
                 </span>
               </h1>
               <p className="mt-6 text-lg text-muted-foreground sm:text-xl">
-                We are an AI solutions company based in Dubai, focused on two areas: transforming digital presence through AI-assisted website redesign, and automating compliance workflows through intelligent due diligence software.
+                Next Horizons is an AI solutions company based in Dubai. We focus on two areas: AI-powered website redesign and intelligent due diligence software for compliance teams. Both services use AI to make work that previously required significantly more time and resources faster and more efficient.
               </p>
             </div>
           </div>
@@ -55,10 +55,13 @@ export default function AboutPage() {
                 <div className="relative">
                   <h2 className="text-sm font-semibold uppercase tracking-wider text-blue-600">Our Mission</h2>
                   <p className="mt-4 text-2xl font-semibold leading-relaxed text-foreground sm:text-3xl">
-                    To make well-designed AI solutions accessible to organisations that would benefit from them most.
+                    Our aim is to make useful AI solutions available to businesses that can benefit from them without needing large internal technology teams or development budgets.
                   </p>
                   <p className="mt-4 text-muted-foreground leading-relaxed">
-                    The most capable AI tools have historically required significant internal resources to deploy effectively. We bring those capabilities to organisations of varying sizes — applying them thoughtfully to problems where they create meaningful, measurable value.
+                    The capabilities of AI have developed extremely quickly.
+                  </p>
+                  <p className="mt-4 text-muted-foreground leading-relaxed">
+                    We take those capabilities and apply them to specific business problems where we believe they can make a measurable difference.
                   </p>
                 </div>
               </div>
@@ -68,10 +71,19 @@ export default function AboutPage() {
                 <div className="relative">
                   <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-500">Our Approach</h2>
                   <p className="mt-4 text-2xl font-semibold leading-relaxed text-foreground sm:text-3xl">
-                    Sector knowledge, applied AI, and a focus on what holds up in daily professional use.
+                    We combine AI and software development with practical knowledge of the markets we work in.
                   </p>
                   <p className="mt-4 text-muted-foreground leading-relaxed">
-                    Our work combines technical expertise in AI with practical experience in the industries we serve. We build tools that work in regulated environments and design experiences that convert — not demos that look good but underperform in practice.
+                    That matters particularly in compliance, where building technically impressive software is not enough. The system also needs to make sense to the professionals using it and fit within the governance and regulatory requirements of the organisation.
+                  </p>
+                  <p className="mt-4 text-muted-foreground leading-relaxed">
+                    The same applies to websites.
+                  </p>
+                  <p className="mt-4 text-muted-foreground leading-relaxed">
+                    AI allows us to design, test and develop considerably faster, but the final website still needs to convince a real visitor and generate business.
+                  </p>
+                  <p className="mt-4 text-muted-foreground leading-relaxed">
+                    That is the standard we work towards.
                   </p>
                 </div>
               </div>
@@ -85,7 +97,7 @@ export default function AboutPage() {
             <div className="mx-auto max-w-2xl text-center">
               <p className="text-sm font-semibold uppercase tracking-wider text-blue-600">Our Focus</p>
               <h2 className="mt-2 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Two Services, Clearly Distinct</h2>
-              <p className="mt-4 text-lg text-muted-foreground">We maintain a deliberate focus on two areas — and we work to be genuinely good at both.</p>
+              <p className="mt-4 text-lg text-muted-foreground">We deliberately focus on two areas and have built a separate proposition around each.</p>
             </div>
             <div className="mt-16 grid gap-10 lg:grid-cols-2">
               <div className="rounded-2xl border border-border/50 bg-background/50 p-8 backdrop-blur-sm">
@@ -94,10 +106,16 @@ export default function AboutPage() {
                 </div>
                 <h3 className="mt-5 text-xl font-semibold text-foreground">AI-Powered Website Redesign</h3>
                 <p className="mt-3 text-muted-foreground leading-relaxed">
-                  We redesign business websites using AI-assisted design tools and modern development practices. The result is a site that is visually current, technically sound, and structured to convert — delivered in four to eight weeks.
+                  We redesign existing business websites using modern AI-assisted design and development tools.
                 </p>
                 <p className="mt-3 text-muted-foreground leading-relaxed">
-                  Our primary focus is the UAE, with clients ranging from professional services firms to technology companies and financial institutions. We also serve selected clients in other countries worldwide.
+                  This allows us to produce high-quality design and development faster and more efficiently than a traditional redesign process.
+                </p>
+                <p className="mt-3 text-muted-foreground leading-relaxed">
+                  The result is a modern website that is technically strong, designed to convert and normally delivered within four to eight weeks.
+                </p>
+                <p className="mt-3 text-muted-foreground leading-relaxed">
+                  Our main market is the UAE, although we also work with companies internationally.
                 </p>
                 <Button asChild variant="outline" size="sm" className="mt-6 border-border/50">
                   <Link href="/services/website-redesign">Website Redesign <ArrowRight className="ml-2 h-3 w-3" /></Link>
@@ -110,10 +128,13 @@ export default function AboutPage() {
                 </div>
                 <h3 className="mt-5 text-xl font-semibold text-foreground">Intelligent Due Diligence Software</h3>
                 <p className="mt-3 text-muted-foreground leading-relaxed">
-                  Our AI platform automates customer due diligence for financial institutions — conducting OSINT research, screening against global sanctions lists, and generating structured CDD reports aligned with FATF and EU AML standards.
+                  We develop standalone AI-assisted due diligence software for financial institutions and other regulated businesses.
                 </p>
                 <p className="mt-3 text-muted-foreground leading-relaxed">
-                  Clients include banks, asset managers, compliance consultancies, and fintech companies operating in regulated markets.
+                  The software can perform OSINT research, sanctions and PEP screening, analyse due diligence information and prepare structured CDD reports.
+                </p>
+                <p className="mt-3 text-muted-foreground leading-relaxed">
+                  It is designed to take time-consuming work away from compliance professionals while keeping the actual judgement and decision with them.
                 </p>
                 <Button asChild variant="outline" size="sm" className="mt-6 border-border/50">
                   <Link href="/services/due-diligence">Due Diligence Software <ArrowRight className="ml-2 h-3 w-3" /></Link>
@@ -129,7 +150,6 @@ export default function AboutPage() {
             <div className="mx-auto max-w-2xl text-center">
               <p className="text-sm font-semibold uppercase tracking-wider text-slate-500">How We Work</p>
               <h2 className="mt-2 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Our Principles</h2>
-              <p className="mt-4 text-lg text-muted-foreground">The standards we hold ourselves to in every client engagement.</p>
             </div>
             <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
               {values.map((value) => (
@@ -153,10 +173,13 @@ export default function AboutPage() {
                 <p className="text-sm font-semibold uppercase tracking-wider text-blue-600">Where We Are</p>
                 <h2 className="mt-2 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Based in Dubai, Serving Clients Globally</h2>
                 <p className="mt-6 text-muted-foreground leading-relaxed">
-                  Next Horizons is incorporated and based in Dubai Silicon Oasis — a regulated free zone and hub for technology companies, ideally positioned to serve the UAE and the wider world.
+                  Next Horizons FZCO is incorporated in Dubai and based in Dubai Silicon Oasis.
                 </p>
                 <p className="mt-4 text-muted-foreground leading-relaxed">
-                  Our primary focus is the UAE, where we serve financial institutions, technology companies, and professional services firms operating in one of the world&apos;s most dynamic markets. We also work with selected clients in other countries worldwide — our compliance platform is built to meet the regulatory requirements of multiple jurisdictions, and our design work is delivered remotely with no loss of quality.
+                  Our main focus is the UAE, where we work across technology, financial services and professional services.
+                </p>
+                <p className="mt-4 text-muted-foreground leading-relaxed">
+                  Our services can also be delivered internationally. Website development is largely location-independent, while our compliance software can be configured around different regulatory environments.
                 </p>
                 <div className="mt-8 rounded-xl border border-border/50 bg-foreground/[0.02] p-5">
                   <p className="text-sm font-semibold text-foreground">Next Horizons FZCO</p>
@@ -167,10 +190,10 @@ export default function AboutPage() {
               </div>
               <div className="grid grid-cols-2 gap-4">
                 {[
-                  { label: "Incorporated", value: "Dubai Silicon Oasis" },
-                  { label: "Regulatory Framework", value: "IFZA Free Zone" },
-                  { label: "Clients Based In", value: "UAE (primary) & worldwide" },
-                  { label: "Languages Supported", value: "English, Arabic" },
+                  { label: "Incorporated", value: "Dubai, United Arab Emirates" },
+                  { label: "Licensing Authority", value: "International Free Zone Authority (IFZA)" },
+                  { label: "Markets Served", value: "UAE and international markets" },
+                  { label: "Project Languages", value: "English, with multilingual websites and screening available where agreed" },
                 ].map((item) => (
                   <div key={item.label} className="rounded-xl border border-border/50 bg-background/50 p-5">
                     <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">{item.label}</p>
@@ -189,7 +212,7 @@ export default function AboutPage() {
           <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-2xl text-center">
               <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Interested in Working Together?</h2>
-              <p className="mt-4 text-lg text-white/80">We are happy to discuss your situation and whether our services are a good fit — without any obligation.</p>
+              <p className="mt-4 text-lg text-white/80">Tell us what you are working on. We are happy to discuss whether one of our services is suitable and what the next step would look like. There is no obligation.</p>
               <Button asChild size="lg" className="group mt-8 bg-white text-blue-700 hover:bg-white/90">
                 <Link href="/contact">Get in Touch <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" /></Link>
               </Button>

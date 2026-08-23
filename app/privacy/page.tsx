@@ -25,7 +25,7 @@ export default function PrivacyPage() {
                 Privacy Policy
               </h1>
               <p className="mt-6 text-sm text-muted-foreground">
-                Last updated: April 2026
+                Last updated: August 2026
               </p>
             </div>
           </div>
@@ -37,137 +37,160 @@ export default function PrivacyPage() {
 
               <div>
                 <p>
-                  This Privacy Policy describes how Next Horizons FZCO (&ldquo;Next Horizons&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;) collects, uses, and protects personal data in connection with our website at nexthorizons.ae (the &ldquo;Website&rdquo;) and the services we provide. By using our Website or services, you acknowledge the practices described in this policy.
+                  This Privacy Policy explains how Next Horizons FZCO (&ldquo;Next Horizons&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo; or &ldquo;our&rdquo;) collects, uses and protects personal information when you use our website or services.
                 </p>
               </div>
 
               <div>
                 <h2 className="text-2xl font-semibold text-foreground">1. Who We Are</h2>
                 <p className="mt-4">
-                  Next Horizons FZCO is a company incorporated in the International Free Zone Authority (IFZA), with its registered address at IFZA Business Park 44824, Dubai Silicon Oasis, Dubai, United Arab Emirates. For any privacy-related questions, you can reach us at contact@nexthorizons.ae.
+                  Next Horizons FZCO is incorporated in the International Free Zone Authority (IFZA) and registered at IFZA Business Park 44824, Dubai Silicon Oasis, Dubai, United Arab Emirates.
+                </p>
+                <p className="mt-4">
+                  For questions about privacy or the way we handle personal information, contact us at contact@nexthorizons.ae.
                 </p>
               </div>
 
               <div>
                 <h2 className="text-2xl font-semibold text-foreground">2. Information We Collect</h2>
-                <p className="mt-4">We collect personal data that you provide to us directly, as well as limited technical data that is generated automatically when you interact with our Website.</p>
-                <h3 className="mt-6 text-lg font-semibold text-foreground">Information you provide</h3>
+                <p className="mt-4">We collect information that you provide to us directly, together with a limited amount of technical information generated when you use our website.</p>
+                <h3 className="mt-6 text-lg font-semibold text-foreground">Information You Provide</h3>
+                <p className="mt-3">This may include:</p>
                 <ul className="mt-3 list-disc space-y-2 pl-6">
-                  <li>Contact details such as your name, company name, email address, and phone number — provided through our contact, mockup request, or call booking forms.</li>
-                  <li>The content of any message, enquiry, or description you submit.</li>
-                  <li>Website URLs or other business information you share to obtain a design concept or proposal.</li>
-                  <li>Scheduling preferences when booking a call, such as preferred dates and time slots.</li>
+                  <li>your name, company name, email address and telephone number;</li>
+                  <li>information submitted through our contact, mockup request or booking forms;</li>
+                  <li>the content of messages and enquiries you send us;</li>
+                  <li>website URLs and other information provided when requesting a redesign concept or quotation; and</li>
+                  <li>information provided when scheduling a call.</li>
                 </ul>
-                <h3 className="mt-6 text-lg font-semibold text-foreground">Information collected automatically</h3>
-                <ul className="mt-3 list-disc space-y-2 pl-6">
-                  <li>Standard server logs, including IP address, browser type, device information, referring URL, and pages visited.</li>
-                  <li>Anonymous usage analytics aimed at understanding aggregate visitor behaviour and improving the Website.</li>
-                </ul>
+                <h3 className="mt-6 text-lg font-semibold text-foreground">Information Collected Automatically</h3>
+                <p className="mt-3">This may include standard server information such as IP address, browser, device, referring website and pages visited.</p>
+                <p className="mt-4">We may also use analytics to understand how the website is being used and where it can be improved.</p>
               </div>
 
               <div>
                 <h2 className="text-2xl font-semibold text-foreground">3. How We Use Your Information</h2>
-                <p className="mt-4">We use personal data for the following purposes:</p>
+                <p className="mt-4">We use personal information to:</p>
                 <ul className="mt-3 list-disc space-y-2 pl-6">
-                  <li>To respond to enquiries and provide the information or services you have requested.</li>
-                  <li>To prepare and deliver design concepts, proposals, and quotations.</li>
-                  <li>To schedule and conduct calls and meetings with prospective and existing clients.</li>
-                  <li>To deliver, support, and improve our website redesign and due diligence services.</li>
-                  <li>To maintain business records and comply with applicable legal, regulatory, and accounting obligations.</li>
-                  <li>To protect the security and integrity of our Website, systems, and services.</li>
+                  <li>respond to enquiries;</li>
+                  <li>prepare redesign concepts, proposals and quotations;</li>
+                  <li>arrange calls and meetings;</li>
+                  <li>provide and support our website redesign and due diligence services;</li>
+                  <li>maintain appropriate business records;</li>
+                  <li>meet legal, regulatory, tax and accounting requirements; and</li>
+                  <li>protect the security of our website, systems and services.</li>
                 </ul>
                 <p className="mt-4">
-                  We do not use your personal data for automated decision-making that produces legal or similarly significant effects, and we do not sell your personal data to third parties.
+                  We do not sell your personal information.
+                </p>
+                <p className="mt-4">
+                  We also do not use your personal information for automated decision-making that produces legal or similarly significant effects.
                 </p>
               </div>
 
               <div>
                 <h2 className="text-2xl font-semibold text-foreground">4. Legal Basis for Processing</h2>
-                <p className="mt-4">Where the UAE Personal Data Protection Law (Federal Decree-Law No. 45 of 2021) or other applicable data protection law requires a specific legal basis for processing, we rely on one or more of the following:</p>
-                <ul className="mt-3 list-disc space-y-2 pl-6">
-                  <li>Your consent, where you have provided information voluntarily for a specific purpose.</li>
-                  <li>The performance of a contract with you, or taking steps at your request prior to entering into a contract.</li>
-                  <li>Compliance with a legal obligation to which we are subject.</li>
-                  <li>Our legitimate interests in operating, promoting, and improving our services, provided those interests are not overridden by your rights and freedoms.</li>
-                </ul>
+                <p className="mt-4">
+                  Where applicable data-protection law requires a legal basis for processing, this may include your consent, taking steps towards or performing a contract, meeting a legal obligation or our legitimate interest in operating and improving our business.
+                </p>
               </div>
 
               <div>
                 <h2 className="text-2xl font-semibold text-foreground">5. How We Share Information</h2>
-                <p className="mt-4">We share personal data only to the extent necessary to operate our business and deliver our services, and only with the following categories of recipients:</p>
-                <ul className="mt-3 list-disc space-y-2 pl-6">
-                  <li>Trusted service providers who process data on our behalf — for example, email delivery, hosting, analytics, and calendar services — under appropriate confidentiality and data-protection obligations.</li>
-                  <li>Professional advisors such as auditors and legal counsel, where required.</li>
-                  <li>Competent authorities, where required by applicable law, regulation, legal process, or governmental request.</li>
-                </ul>
                 <p className="mt-4">
-                  For clients of our due diligence platform, the platform itself is deployed within your own infrastructure. Client data, uploaded documents, and generated reports remain in your environment and are not transmitted to or stored by Next Horizons.
+                  We only share personal information where this is reasonably required to operate our business, provide our services or meet legal obligations.
+                </p>
+                <p className="mt-4">
+                  This may include service providers used for hosting, email, analytics or scheduling, professional advisers and competent authorities where disclosure is legally required.
+                </p>
+                <p className="mt-4">
+                  Appropriate confidentiality and data-protection arrangements are used where required.
+                </p>
+                <p className="mt-4">
+                  Where due diligence software is deployed within a client&rsquo;s own infrastructure or private cloud, the exact data flows, storage arrangements and any external processing are documented as part of the agreed technical configuration.
                 </p>
               </div>
 
               <div>
                 <h2 className="text-2xl font-semibold text-foreground">6. International Transfers</h2>
                 <p className="mt-4">
-                  We are based in the United Arab Emirates. Where personal data is transferred outside the UAE — for example, to service providers located in the European Economic Area or other jurisdictions — we take reasonable steps to ensure an adequate level of protection, including contractual safeguards consistent with applicable data-protection law.
+                  Next Horizons is based in the United Arab Emirates.
+                </p>
+                <p className="mt-4">
+                  Where information needs to be transferred to service providers in another jurisdiction, we take reasonable steps to make sure appropriate protections are in place in accordance with applicable law.
                 </p>
               </div>
 
               <div>
                 <h2 className="text-2xl font-semibold text-foreground">7. Data Retention</h2>
                 <p className="mt-4">
-                  We retain personal data only for as long as reasonably necessary for the purposes set out in this policy, for the duration of any contract, and to meet applicable legal, tax, accounting, and regulatory requirements. When personal data is no longer required, we securely delete or anonymise it.
+                  We keep personal information only for as long as reasonably required for the purpose for which it was collected, the duration of an applicable contract and any legal, accounting, tax or regulatory retention requirements.
+                </p>
+                <p className="mt-4">
+                  Once information is no longer required, it is deleted or anonymised where appropriate.
                 </p>
               </div>
 
               <div>
                 <h2 className="text-2xl font-semibold text-foreground">8. Data Security</h2>
                 <p className="mt-4">
-                  We implement appropriate technical and organisational measures to protect personal data against unauthorised access, disclosure, alteration, or destruction. These measures include encryption in transit, restricted access controls, secure hosting, and confidentiality obligations for our personnel and service providers. No method of transmission or storage is perfectly secure, however, and we cannot guarantee absolute security.
+                  We use appropriate technical and organisational measures to protect personal information against unauthorised access, disclosure, alteration or loss.
+                </p>
+                <p className="mt-4">
+                  Measures may include encryption, access controls, secure hosting and confidentiality requirements.
+                </p>
+                <p className="mt-4">
+                  No method of electronic transmission or storage is completely secure, however, and absolute security cannot be guaranteed.
                 </p>
               </div>
 
               <div>
                 <h2 className="text-2xl font-semibold text-foreground">9. Your Rights</h2>
-                <p className="mt-4">Subject to applicable law, you may have the following rights in relation to your personal data:</p>
-                <ul className="mt-3 list-disc space-y-2 pl-6">
-                  <li>The right to access the personal data we hold about you.</li>
-                  <li>The right to request correction of inaccurate or incomplete data.</li>
-                  <li>The right to request deletion of personal data in certain circumstances.</li>
-                  <li>The right to restrict or object to certain processing activities.</li>
-                  <li>The right to withdraw consent where processing is based on your consent.</li>
-                  <li>The right to data portability, where applicable.</li>
-                  <li>The right to lodge a complaint with the relevant data protection authority.</li>
-                </ul>
                 <p className="mt-4">
-                  To exercise any of these rights, please email us at contact@nexthorizons.ae. We will respond within a reasonable timeframe and in accordance with applicable law.
+                  Depending on the law that applies to you, you may have rights relating to access, correction, deletion, restriction, objection, withdrawal of consent and data portability.
+                </p>
+                <p className="mt-4">
+                  You may also have the right to submit a complaint to an appropriate data-protection authority.
+                </p>
+                <p className="mt-4">
+                  To make a request, contact us at contact@nexthorizons.ae.
                 </p>
               </div>
 
               <div>
                 <h2 className="text-2xl font-semibold text-foreground">10. Cookies and Similar Technologies</h2>
                 <p className="mt-4">
-                  Our Website uses a limited number of cookies and similar technologies to operate the site, remember preferences, and understand how visitors use the Website. You can configure your browser to refuse cookies or alert you when cookies are being sent. Some parts of the Website may not function correctly if cookies are disabled.
+                  Our website may use a limited number of cookies and similar technologies for basic website functionality, preferences and analytics.
+                </p>
+                <p className="mt-4">
+                  You can control cookies through your browser settings, although disabling some cookies may affect parts of the website.
                 </p>
               </div>
 
               <div>
                 <h2 className="text-2xl font-semibold text-foreground">11. Third-Party Links</h2>
                 <p className="mt-4">
-                  Our Website may contain links to third-party websites. We are not responsible for the privacy practices or content of those sites. We encourage you to review the privacy policies of any third-party websites you visit.
+                  Our website may contain links to third-party websites.
+                </p>
+                <p className="mt-4">
+                  We are not responsible for the content or privacy practices of those websites.
                 </p>
               </div>
 
               <div>
                 <h2 className="text-2xl font-semibold text-foreground">12. Changes to This Policy</h2>
                 <p className="mt-4">
-                  We may update this Privacy Policy from time to time. The most current version will always be posted on this page, with the &ldquo;Last updated&rdquo; date above reflecting the date of the most recent revision. We encourage you to review this policy periodically.
+                  We may update this Privacy Policy from time to time.
+                </p>
+                <p className="mt-4">
+                  The current version will be published on this page and the date above will show when it was most recently updated.
                 </p>
               </div>
 
               <div>
                 <h2 className="text-2xl font-semibold text-foreground">13. Contact</h2>
                 <p className="mt-4">
-                  For questions, requests, or complaints about this Privacy Policy or our handling of personal data, please contact us at:
+                  For questions, requests or complaints relating to this Privacy Policy, contact:
                 </p>
                 <div className="mt-4 rounded-xl border border-border/50 bg-foreground/[0.02] p-5">
                   <p className="text-sm font-semibold text-foreground">Next Horizons FZCO</p>
