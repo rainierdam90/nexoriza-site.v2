@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json(
         {
           error:
-            "Online payment is not yet configured. Please email contact@nexthorizons.ae for a manual invoice.",
+            "Online payment is not yet configured. Please email rainier@nexthorizonsglobal.com for a manual invoice.",
         },
         { status: 503 },
       )

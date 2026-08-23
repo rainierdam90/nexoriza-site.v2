@@ -59,8 +59,8 @@ export default async function MockupPage({ params }: PageProps) {
             <h1 className="text-3xl font-bold">This mockup link has expired</h1>
             <p className="mt-4 text-muted-foreground">
               If you&apos;d like to reactivate it, please email{" "}
-              <a href="mailto:contact@nexthorizons.ae" className="text-blue-600 underline">
-                contact@nexthorizons.ae
+              <a href="mailto:rainier@nexthorizonsglobal.com" className="text-blue-600 underline">
+                rainier@nexthorizonsglobal.com
               </a>
               .
             </p>

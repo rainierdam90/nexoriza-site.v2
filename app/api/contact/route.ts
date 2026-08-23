@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 })
     }
 
-    const toEmail   = process.env.CONTACT_EMAIL ?? "contact@nexthorizons.ae"
+    const toEmail   = process.env.CONTACT_EMAIL ?? "rainier@nexthorizonsglobal.com"
     const fromEmail = process.env.CONTACT_FROM  ?? "contact@nexthorizons.ae"
     const apiKey    = process.env.RESEND_API_KEY
 

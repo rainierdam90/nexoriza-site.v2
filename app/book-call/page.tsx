@@ -52,7 +52,7 @@ function BookCallForm() {
       formRef.current?.reset()
       setTimeSlot("")
     } catch {
-      setError("Something went wrong. Please try again or email us directly at contact@nexthorizons.ae")
+      setError("Something went wrong. Please try again or email us directly at rainier@nexthorizonsglobal.com")
     } finally {
       setIsSubmitting(false)
     }
@@ -127,8 +127,8 @@ function BookCallForm() {
                       <p className="font-semibold text-foreground">Prefer Email?</p>
                       <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
                         You can also reach us at:{" "}
-                        <a href="mailto:contact@nexthorizons.ae" className="font-medium text-foreground transition-colors hover:text-blue-600">
-                          contact@nexthorizons.ae
+                        <a href="mailto:rainier@nexthorizonsglobal.com" className="font-medium text-foreground transition-colors hover:text-blue-600">
+                          rainier@nexthorizonsglobal.com
                         </a>
                       </p>
                     </div>

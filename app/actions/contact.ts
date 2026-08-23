@@ -7,7 +7,7 @@ export async function submitContactForm(formData: FormData) {
   const service = formData.get("service") as string
   const message = formData.get("message") as string
 
-  const toEmail = process.env.CONTACT_EMAIL || "contact@nexthorizons.ae"
+  const toEmail = process.env.CONTACT_EMAIL || "rainier@nexthorizonsglobal.com"
 
   const body = [
     "New enquiry via the Next Horizons website",

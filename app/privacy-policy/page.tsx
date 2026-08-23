@@ -19,7 +19,7 @@ export default function PrivacyPolicyPage() {
           <div>
             <h2 className="text-2xl font-semibold text-foreground">1. Who We Are</h2>
             <p className="mt-4">Next Horizons FZCO is incorporated in the International Free Zone Authority (IFZA) and registered at IFZA Business Park 44824, Dubai Silicon Oasis, Dubai, United Arab Emirates.</p>
-            <p className="mt-4">For questions about privacy or the way we handle personal information, contact us at contact@nexthorizons.ae.</p>
+            <p className="mt-4">For questions about privacy or the way we handle personal information, contact us at rainier@nexthorizonsglobal.com.</p>
           </div>
 
           <div>
@@ -91,7 +91,7 @@ export default function PrivacyPolicyPage() {
             <h2 className="text-2xl font-semibold text-foreground">9. Your Rights</h2>
             <p className="mt-4">Depending on the law that applies to you, you may have rights relating to access, correction, deletion, restriction, objection, withdrawal of consent and data portability.</p>
             <p className="mt-4">You may also have the right to submit a complaint to an appropriate data-protection authority.</p>
-            <p className="mt-4">To make a request, contact us at contact@nexthorizons.ae.</p>
+            <p className="mt-4">To make a request, contact us at rainier@nexthorizonsglobal.com.</p>
           </div>
 
           <div>
@@ -119,7 +119,7 @@ export default function PrivacyPolicyPage() {
               <p className="text-sm font-semibold text-foreground">Next Horizons FZCO</p>
               <p className="mt-1 text-sm">IFZA Business Park 44824</p>
               <p className="text-sm">Dubai Silicon Oasis, Dubai, UAE</p>
-              <p className="mt-2 text-sm">Email: contact@nexthorizons.ae</p>
+              <p className="mt-2 text-sm">Email: rainier@nexthorizonsglobal.com</p>
             </div>
           </div>
         </div>

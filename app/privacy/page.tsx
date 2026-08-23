@@ -47,7 +47,7 @@ export default function PrivacyPage() {
                   Next Horizons FZCO is incorporated in the International Free Zone Authority (IFZA) and registered at IFZA Business Park 44824, Dubai Silicon Oasis, Dubai, United Arab Emirates.
                 </p>
                 <p className="mt-4">
-                  For questions about privacy or the way we handle personal information, contact us at contact@nexthorizons.ae.
+                  For questions about privacy or the way we handle personal information, contact us at rainier@nexthorizonsglobal.com.
                 </p>
               </div>
 
@@ -153,7 +153,7 @@ export default function PrivacyPage() {
                   You may also have the right to submit a complaint to an appropriate data-protection authority.
                 </p>
                 <p className="mt-4">
-                  To make a request, contact us at contact@nexthorizons.ae.
+                  To make a request, contact us at rainier@nexthorizonsglobal.com.
                 </p>
               </div>
 
@@ -196,7 +196,7 @@ export default function PrivacyPage() {
                   <p className="text-sm font-semibold text-foreground">Next Horizons FZCO</p>
                   <p className="mt-1 text-sm">IFZA Business Park 44824</p>
                   <p className="text-sm">Dubai Silicon Oasis, Dubai, UAE</p>
-                  <p className="mt-2 text-sm">Email: contact@nexthorizons.ae</p>
+                  <p className="mt-2 text-sm">Email: rainier@nexthorizonsglobal.com</p>
                 </div>
               </div>
 

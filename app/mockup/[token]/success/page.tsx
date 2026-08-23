@@ -77,8 +77,8 @@ export default async function MockupSuccessPage({ params }: PageProps) {
                     <p className="font-semibold text-foreground">Confirmation email</p>
                     <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
                       You&apos;ll receive a confirmation email within minutes from{" "}
-                      <a href="mailto:contact@nexthorizons.ae" className="text-blue-600 hover:underline">
-                        contact@nexthorizons.ae
+                      <a href="mailto:rainier@nexthorizonsglobal.com" className="text-blue-600 hover:underline">
+                        rainier@nexthorizonsglobal.com
                       </a>
                       , including your invoice and a summary of what was ordered.
                     </p>
@@ -120,8 +120,8 @@ export default async function MockupSuccessPage({ params }: PageProps) {
                   <p className="font-semibold text-foreground">Questions in the meantime?</p>
                   <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
                     Reply to your confirmation email or write to{" "}
-                    <a href="mailto:contact@nexthorizons.ae" className="text-blue-600 hover:underline">
-                      contact@nexthorizons.ae
+                    <a href="mailto:rainier@nexthorizonsglobal.com" className="text-blue-600 hover:underline">
+                      rainier@nexthorizonsglobal.com
                     </a>
                     . We typically respond within a few hours during UAE business hours.
                   </p>

@@ -78,7 +78,7 @@ export function UnlockButton({ token, priceLabel, className }: UnlockButtonProps
           <div>
             <p className="font-medium">Payment is temporarily unavailable</p>
             <p className="mt-0.5 text-xs">
-              {error}. Please email <a href="mailto:contact@nexthorizons.ae" className="underline">contact@nexthorizons.ae</a> and we&apos;ll send you a payment link manually.
+              {error}. Please email <a href="mailto:rainier@nexthorizonsglobal.com" className="underline">rainier@nexthorizonsglobal.com</a> and we&apos;ll send you a payment link manually.
             </p>
           </div>
         </div>

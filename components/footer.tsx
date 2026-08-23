@@ -10,16 +10,16 @@ export function Footer() {
 
           {/* Logo & Tagline */}
           <div className="lg:col-span-2">
-            <Link href="/services/website-redesign" className="inline-flex items-center">
+            <Link href="/services/due-diligence" className="inline-flex items-center">
               <Logo className="h-11 text-foreground" />
             </Link>
             <p className="mt-4 max-w-sm text-sm text-muted-foreground leading-relaxed">
               AI-powered website redesign and intelligent due diligence software for businesses in the UAE and internationally.
             </p>
             <div className="mt-6 space-y-2">
-              <a href="mailto:contact@nexthorizons.ae" className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground">
+              <a href="mailto:rainier@nexthorizonsglobal.com" className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground">
                 <Mail className="h-4 w-4" />
-                contact@nexthorizons.ae
+                rainier@nexthorizonsglobal.com
               </a>
               <div className="flex items-start gap-2 text-sm text-muted-foreground">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0" />

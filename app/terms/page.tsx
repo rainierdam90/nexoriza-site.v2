@@ -276,7 +276,7 @@ export default function TermsPage() {
                   <p className="text-sm font-semibold text-foreground">Next Horizons FZCO</p>
                   <p className="mt-1 text-sm">IFZA Business Park 44824</p>
                   <p className="text-sm">Dubai Silicon Oasis, Dubai, UAE</p>
-                  <p className="mt-2 text-sm">Email: contact@nexthorizons.ae</p>
+                  <p className="mt-2 text-sm">Email: rainier@nexthorizonsglobal.com</p>
                 </div>
               </div>
 

@@ -97,7 +97,7 @@ export default function ContactPage() {
 
                 <div className="mt-10 space-y-5">
                   {[
-                    { icon: Mail, label: "Email", value: "contact@nexthorizons.ae", sub: "We normally respond within one business day.", href: "mailto:contact@nexthorizons.ae" },
+                    { icon: Mail, label: "Email", value: "rainier@nexthorizonsglobal.com", sub: "We normally respond within one business day.", href: "mailto:rainier@nexthorizonsglobal.com" },
                     { icon: MapPin, label: "Address", value: "Next Horizons FZCO", sub: "IFZA Business Park 44824, Dubai Silicon Oasis, Dubai, UAE", href: null },
                     { icon: Clock, label: "Response time", value: "Within one business day", sub: "Sunday to Thursday", href: null },
                   ].map((info) => (

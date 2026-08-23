@@ -31,7 +31,7 @@ export default function RequestMockupPage() {
       if (!res.ok) throw new Error("Submission failed")
       setIsSubmitted(true)
     } catch {
-      setError("Something went wrong. Please try again or email us directly at contact@nexthorizons.ae")
+      setError("Something went wrong. Please try again or email us directly at rainier@nexthorizonsglobal.com")
     } finally {
       setIsSubmitting(false)
     }
