@@ -1,7 +1,7 @@
 "use client"
 
 import { Header } from "@/components/header"
-import { submitViaFormSubmit } from "@/lib/submit-form"
+import { submitViaFormSubmit, submitErrorMessage } from "@/lib/submit-form"
 import { Footer } from "@/components/footer"
 import { AnimatedBackground } from "@/components/animated-background"
 import { Button } from "@/components/ui/button"
@@ -26,8 +26,8 @@ export default function RequestMockupPage() {
 
       await submitViaFormSubmit(formData)
       setIsSubmitted(true)
-    } catch {
-      setError("Something went wrong. Please try again or email us directly at rainier@nexthorizonsglobal.com")
+    } catch (err) {
+      setError(submitErrorMessage(err, "Something went wrong. Please try again or email us directly at rainier@nexthorizonsglobal.com"))
     } finally {
       setIsSubmitting(false)
     }

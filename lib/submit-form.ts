@@ -72,6 +72,13 @@ export async function submitViaFormSubmit(formData: FormData): Promise<void> {
 
   const data = await res.json().catch(() => null)
   if (!res.ok || !data || String(data.success) !== "true") {
+    // FormSubmit's message explains actionable cases (e.g. the one-time
+    // per-domain activation email) — surface it to the user.
     throw new Error(data?.message || "Submission failed")
   }
+}
+
+export function submitErrorMessage(err: unknown, base: string): string {
+  const detail = err instanceof Error && err.message && err.message !== "Submission failed" ? ` Details: ${err.message}` : ""
+  return `${base}${detail}`
 }
