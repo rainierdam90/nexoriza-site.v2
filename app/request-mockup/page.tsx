@@ -1,6 +1,7 @@
 "use client"
 
 import { Header } from "@/components/header"
+import { submitViaFormSubmit } from "@/lib/submit-form"
 import { Footer } from "@/components/footer"
 import { AnimatedBackground } from "@/components/animated-background"
 import { Button } from "@/components/ui/button"
@@ -23,12 +24,7 @@ export default function RequestMockupPage() {
       const formData = new FormData(e.currentTarget)
       formData.set("service", "Free Redesign Mockup Request")
 
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        body: formData,
-      })
-
-      if (!res.ok) throw new Error("Submission failed")
+      await submitViaFormSubmit(formData)
       setIsSubmitted(true)
     } catch {
       setError("Something went wrong. Please try again or email us directly at rainier@nexthorizonsglobal.com")

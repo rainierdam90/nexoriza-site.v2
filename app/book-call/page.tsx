@@ -1,6 +1,7 @@
 "use client"
 
 import { Header } from "@/components/header"
+import { submitViaFormSubmit } from "@/lib/submit-form"
 import { Footer } from "@/components/footer"
 import { AnimatedBackground } from "@/components/animated-background"
 import { Button } from "@/components/ui/button"
@@ -42,12 +43,7 @@ function BookCallForm() {
       formData.set("service", `Call Booking — ${topic}`)
       formData.set("timeSlot", timeSlot)
 
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        body: formData,
-      })
-
-      if (!res.ok) throw new Error("Submission failed")
+      await submitViaFormSubmit(formData)
       setIsSubmitted(true)
       formRef.current?.reset()
       setTimeSlot("")

@@ -1,6 +1,7 @@
 "use client"
 
 import { Header } from "@/components/header"
+import { submitViaFormSubmit } from "@/lib/submit-form"
 import { Footer } from "@/components/footer"
 import { AnimatedBackground } from "@/components/animated-background"
 import { Button } from "@/components/ui/button"
@@ -27,12 +28,7 @@ export default function ContactPage() {
       const formData = new FormData(e.currentTarget)
       formData.set("service", service)
 
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        body: formData,
-      })
-
-      if (!res.ok) throw new Error("Submission failed")
+      await submitViaFormSubmit(formData)
 
       setIsSubmitted(true)
       formRef.current?.reset()
