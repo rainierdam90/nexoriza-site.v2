@@ -76,10 +76,13 @@ export async function POST(req: NextRequest) {
       body: JSON.stringify(payload),
     })
 
-    const data = await res.json().catch(() => null)
+    const raw = await res.text()
+    let data: any = null
+    try { data = JSON.parse(raw) } catch {}
     if (!res.ok || !data || String(data.success) !== "true") {
-      console.error("[Contact] FormSubmit error:", res.status, JSON.stringify(data))
-      return NextResponse.json({ error: "Failed to send email" }, { status: 500 })
+      console.error("[Contact] FormSubmit error:", res.status, raw.slice(0, 500))
+      // TODO: remove debug detail once delivery is confirmed
+      return NextResponse.json({ error: "Failed to send email", debug: { status: res.status, body: raw.slice(0, 300) } }, { status: 500 })
     }
 
     return NextResponse.json({ success: true })
