@@ -66,6 +66,13 @@ def run_command(command: list) -> dict:
         if not isinstance(value, str) or ttl <= 0:
             return {"error": "ERR bad SET"}
         with _lock:
+            existing = _store.get(key)
+            now = time.monotonic()
+            if existing is not None and existing[1] <= now:
+                del _store[key]
+                existing = None
+            if "NX" in rest and existing is not None:
+                return {"result": None}
             _store[key] = (value, time.monotonic() + ttl)
         return {"result": "OK"}
 

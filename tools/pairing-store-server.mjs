@@ -50,7 +50,11 @@ function run(command) {
       const value = rest[0]
       const exIndex = rest.findIndex((part) => String(part).toUpperCase() === "EX")
       const ttl = exIndex >= 0 ? Number(rest[exIndex + 1]) : 600
+      const nx = rest.some((part) => String(part).toUpperCase() === "NX")
       if (typeof value !== "string" || !Number.isFinite(ttl) || ttl <= 0) return { error: "ERR bad SET" }
+      const existing = store.get(key)
+      if (existing && existing.expiresAt <= Date.now()) store.delete(key)
+      else if (nx && existing) return { result: null }
       store.set(key, { value, expiresAt: Date.now() + ttl * 1000 })
       return { result: "OK" }
     }

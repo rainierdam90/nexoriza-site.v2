@@ -11,7 +11,7 @@ store they both reach. That is the *only* thing being stored: one small JSON
 blob per pairing, for at most ten minutes.
 
 The website talks to this service with the same two commands it would send to
-Upstash (`SET … EX` and `GETDEL`), so **nothing in the app changes** — you only
+Upstash (`SET … EX … NX` and `GETDEL`), so **nothing in the app changes** — you only
 set two environment variables.
 
 ## Two builds, same protocol
@@ -127,6 +127,9 @@ Redeploy, then check `https://www.nhsoftware.ae/iptv/api/status`. It must say
 - **Payloads contain IPTV passwords.** The service never logs keys or values,
   and entries are deleted the moment the TV reads them. Keep it that way if you
   edit it.
+- **First write wins.** `SET … NX` is atomic under the process lock. A random
+  code collision therefore returns a null result instead of overwriting the
+  payload already waiting for another TV.
 - **Sizing is not a concern**: a handful of small strings and roughly 17
   requests per minute per waiting TV.
 - Health check: `curl -H "Authorization: Bearer $PAIRING_TOKEN" -d '["PING"]' https://pairing.example.com` → `{"result":"PONG"}`.
