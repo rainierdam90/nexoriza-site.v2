@@ -8,7 +8,10 @@ import { SESSION_TTL_SECONDS, type PairingPayload } from "@/lib/iptv-pairing"
  *   - Redis over the Upstash-style REST API (production): used when a URL and
  *     a token are both present. Either naming convention works —
  *     KV_REST_API_URL/KV_REST_API_TOKEN (Vercel KV) or
- *     UPSTASH_REDIS_REST_URL/UPSTASH_REDIS_REST_TOKEN.
+ *     UPSTASH_REDIS_REST_URL/UPSTASH_REDIS_REST_TOKEN. It does not have to be
+ *     Redis: only SET…EX and GETDEL are ever sent, so a self-hosted service
+ *     answering that subset works identically — tools/pairing-store-server.mjs
+ *     is exactly that, for running the store on your own VPS.
  *
  *   - An in-process Map (dev): correct for a single `next dev` server and
  *     nothing else. A serverless deployment runs many instances, so a session
@@ -184,43 +187,41 @@ export interface RateLimitResult {
   retryAfter: number
 }
 
-/** Fixed-window counter, keyed by an opaque bucket the caller composes. */
+/**
+ * Fixed-window counter, keyed by an opaque bucket the caller composes.
+ *
+ * Deliberately in-process even when Redis is configured. A TV polls every
+ * 3.5s, so routing the limiter through Redis would double the commands this
+ * feature spends — the difference between comfortably inside a free plan and
+ * over it. What that costs is precision: each serverless instance counts its
+ * own bucket, so the effective ceiling is the configured limit times however
+ * many instances are warm.
+ *
+ * That is an acceptable trade here because the limiter is not what protects a
+ * session. Guessing a live code means searching 30^6 = 729 million codes
+ * inside a 10-minute TTL; at ten thousand requests a second that is still ten
+ * hours per hit. The limiter exists to keep a stuck client or a crawler from
+ * generating load, and a per-instance bucket does that job.
+ */
 export async function consumeRateLimit(
   bucket: string,
   limit: number,
   windowSeconds: number,
 ): Promise<RateLimitResult> {
   const key = RATE_PREFIX + bucket
+  const now = Date.now()
+  sweep(now)
 
-  const cfg = redisConfig()
-  if (!cfg) {
-    const now = Date.now()
-    sweep(now)
-    const entry = memory.get(key)
-    if (!entry || entry.expiresAt <= now) {
-      memory.set(key, { value: "1", expiresAt: now + windowSeconds * 1000 })
-      return { ok: true, retryAfter: 0 }
-    }
-    const count = Number(entry.value) + 1
-    entry.value = String(count)
-    if (count <= limit) return { ok: true, retryAfter: 0 }
-    return { ok: false, retryAfter: secondsUntil(entry.expiresAt, now, windowSeconds) }
+  const entry = memory.get(key)
+  if (!entry || entry.expiresAt <= now) {
+    memory.set(key, { value: "1", expiresAt: now + windowSeconds * 1000 })
+    return { ok: true, retryAfter: 0 }
   }
 
-  const count = Number(await redisCommand(cfg, ["INCR", key]))
-  if (count === 1) {
-    await redisCommand(cfg, ["EXPIRE", key, String(windowSeconds)])
-  }
+  const count = Number(entry.value) + 1
+  entry.value = String(count)
   if (count <= limit) return { ok: true, retryAfter: 0 }
-
-  const ttl = Number(await redisCommand(cfg, ["TTL", key]))
-  if (ttl === -1) {
-    // INCR landed but EXPIRE did not — without this the counter would never
-    // reset and the caller's IP would be blocked permanently.
-    await redisCommand(cfg, ["EXPIRE", key, String(windowSeconds)])
-    return { ok: false, retryAfter: windowSeconds }
-  }
-  return { ok: false, retryAfter: ttl > 0 ? ttl : windowSeconds }
+  return { ok: false, retryAfter: secondsUntil(entry.expiresAt, now, windowSeconds) }
 }
 
 function secondsUntil(expiresAt: number, now: number, fallback: number): number {
