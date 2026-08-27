@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server"
 import {
   MAX_BODY_BYTES,
-  isValidCode,
+  isValidBackupTransferCode,
+  isValidSessionCode,
   normalizeCode,
   pairingPayloadSchema,
 } from "@/lib/iptv-pairing"
@@ -138,7 +139,7 @@ export async function POST(req: NextRequest, ctx: RouteContext): Promise<NextRes
 
     // Checked before the body is read so a wrong code costs nothing.
     const code = normalizeCode((await ctx.params).code)
-    if (!isValidCode(code)) return jsonResponse({ error: "invalid_payload" }, 400)
+    if (!isValidSessionCode(code)) return jsonResponse({ error: "invalid_payload" }, 400)
 
     const raw = await readBoundedText(req, MAX_BODY_BYTES)
     if (raw === null) return jsonResponse({ error: "payload_too_large" }, 413)
@@ -154,6 +155,11 @@ export async function POST(req: NextRequest, ctx: RouteContext): Promise<NextRes
     // The failure reason is discarded rather than echoed: zod reports the
     // offending value, which here is a password.
     if (!parsed.success) return jsonResponse({ error: "invalid_payload" }, 400)
+    // Long tokens are outbound backup transfers only. Keeping source setup on
+    // the short TV code prevents the two flows from being confused.
+    if (isValidBackupTransferCode(code) && parsed.data.type !== "backup") {
+      return jsonResponse({ error: "invalid_payload" }, 400)
+    }
 
     const stored = await putSession(code, parsed.data)
     if (!stored) return jsonResponse({ error: "code_in_use" }, 409)
@@ -173,7 +179,7 @@ export async function GET(req: NextRequest, ctx: RouteContext): Promise<NextResp
     // A malformed code, an expired session and a code nobody ever generated
     // all answer identically. Never 410 — "gone" would confirm that the code
     // existed, turning polling into an enumeration oracle.
-    if (!isValidCode(code)) return jsonResponse({ error: "not_found" }, 404)
+    if (!isValidSessionCode(code)) return jsonResponse({ error: "not_found" }, 404)
 
     const payload = await takeSession(code)
     if (!payload) return jsonResponse({ error: "not_found" }, 404)

@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Textarea } from "@/components/ui/textarea"
-import { Check, Eye, EyeOff, Loader2, ShieldCheck, Tv } from "lucide-react"
+import { Check, Clipboard, Download, Eye, EyeOff, Loader2, RefreshCw, ShieldCheck, Tv } from "lucide-react"
 import {
   CODE_LENGTH,
   SOURCE_KINDS,
@@ -85,6 +85,16 @@ const strings = {
     errorRateLimited: "Te veel pogingen. Wacht even en probeer het daarna opnieuw.",
     errorServer: "Er ging iets mis aan onze kant. Probeer het zo nog een keer.",
     errorNetwork: "Geen verbinding. Controleer je internet en probeer het opnieuw.",
+    exportHeading: ["Je back-up staat", "klaar"],
+    exportIntro: "De back-up is eenmalig en veilig van je televisie opgehaald.",
+    exportLoading: "Back-up veilig ophalen…",
+    exportReady: "Bewaar de code nu op je telefoon. Hij bevat je brongegevens en moet als een wachtwoord worden behandeld.",
+    exportCopy: "Kopiëren",
+    exportCopied: "Gekopieerd",
+    exportDownload: "Download bestand",
+    exportError: "Deze back-uplink is verlopen of al gebruikt. Maak op je televisie een nieuwe QR-code.",
+    exportRetry: "Opnieuw proberen",
+    exportPrivacy: "De overdracht is nu van de server verwijderd. Alleen deze pagina houdt de back-up nog tijdelijk vast.",
     footerPrivacy: "Privacybeleid",
   },
   en: {
@@ -148,6 +158,16 @@ const strings = {
     errorRateLimited: "Too many attempts. Wait a moment and try again.",
     errorServer: "Something went wrong on our side. Please try again shortly.",
     errorNetwork: "No connection. Check your internet and try again.",
+    exportHeading: ["Your backup is", "ready"],
+    exportIntro: "The backup was collected securely and once from your television.",
+    exportLoading: "Collecting backup securely…",
+    exportReady: "Save the code on your phone now. It contains source credentials and must be treated like a password.",
+    exportCopy: "Copy",
+    exportCopied: "Copied",
+    exportDownload: "Download file",
+    exportError: "This backup link has expired or was already used. Create a new QR code on your television.",
+    exportRetry: "Try again",
+    exportPrivacy: "The transfer has now been removed from the server. Only this page still holds the backup temporarily.",
     footerPrivacy: "Privacy Policy",
   },
 }
@@ -249,7 +269,200 @@ function isOversized(payload: PairingPayload | null): boolean {
   return !result.success && result.error.issues.some((issue) => issue.code === "too_big")
 }
 
-export function PairingClient({
+type PairingClientProps = {
+  initialCode: string
+  initialLang?: Lang
+  year: number
+  exportCode?: string
+}
+
+const exportRequests = new Map<string, Promise<string>>()
+
+function requestBackupExport(code: string): Promise<string> {
+  const storageKey = `tivexo-backup-export:${code}`
+  try {
+    const stored = window.sessionStorage.getItem(storageKey)
+    if (stored) return Promise.resolve(stored)
+  } catch {
+    // Private browsing can deny storage; the in-memory request cache still
+    // prevents React development remounts from consuming the one-time GET twice.
+  }
+
+  const existing = exportRequests.get(code)
+  if (existing) return existing
+
+  const request = fetch(`/iptv/api/session/${encodeURIComponent(code)}`, {
+    method: "GET",
+    cache: "no-store",
+  })
+    .then(async (response) => {
+      if (response.status !== 200) throw new Error("export_unavailable")
+      const result = pairingPayloadSchema.safeParse(await response.json())
+      if (!result.success || result.data.type !== "backup") throw new Error("export_invalid")
+      try {
+        window.sessionStorage.setItem(storageKey, result.data.code)
+      } catch {
+        // The visible page still retains the code even if storage is unavailable.
+      }
+      return result.data.code
+    })
+    .catch((error) => {
+      exportRequests.delete(code)
+      throw error
+    })
+
+  exportRequests.set(code, request)
+  return request
+}
+
+function BackupExportClient({ code, initialLang, year }: { code: string; initialLang?: Lang; year: number }) {
+  const [lang, setLang] = useState<Lang>(initialLang ?? "en")
+  const [backup, setBackup] = useState("")
+  const [status, setStatus] = useState<"loading" | "ready" | "error">("loading")
+  const [copied, setCopied] = useState(false)
+  const [retryKey, setRetryKey] = useState(0)
+  const textRef = useRef<HTMLTextAreaElement>(null)
+  const t: Copy = strings[lang]
+
+  useEffect(() => {
+    if (initialLang) return
+    const preferred = navigator.languages?.[0] ?? navigator.language
+    if (preferred?.toLowerCase().startsWith("nl")) setLang("nl")
+  }, [initialLang])
+
+  useEffect(() => {
+    const previous = document.documentElement.lang
+    document.documentElement.lang = lang
+    return () => { document.documentElement.lang = previous }
+  }, [lang])
+
+  useEffect(() => {
+    let active = true
+    setStatus("loading")
+    requestBackupExport(code).then(
+      (value) => {
+        if (!active) return
+        setBackup(value)
+        setStatus("ready")
+      },
+      () => { if (active) setStatus("error") },
+    )
+    return () => { active = false }
+  }, [code, retryKey])
+
+  async function copyBackup() {
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(backup)
+      } else {
+        textRef.current?.focus()
+        textRef.current?.select()
+        document.execCommand("copy")
+      }
+      setCopied(true)
+      window.setTimeout(() => setCopied(false), 2500)
+    } catch {
+      textRef.current?.focus()
+      textRef.current?.select()
+    }
+  }
+
+  function downloadBackup() {
+    const blob = new Blob([backup], { type: "text/plain;charset=utf-8" })
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement("a")
+    link.href = url
+    link.download = `tivexo-backup-${new Date().toISOString().slice(0, 10)}.txt`
+    document.body.appendChild(link)
+    link.click()
+    link.remove()
+    window.setTimeout(() => URL.revokeObjectURL(url), 1000)
+  }
+
+  return (
+    <div className="relative isolate flex min-h-svh flex-col overflow-hidden">
+      <AnimatedBackground />
+      <header className="relative z-10 flex items-center justify-between gap-3 px-4 py-3 sm:px-6">
+        <Link href="/" className="flex items-center" aria-label="Next Horizons">
+          <Logo className="h-10 text-foreground" />
+        </Link>
+        <span role="group" aria-label={t.languageGroup} className="flex shrink-0 items-center gap-1 rounded-full border border-border/60 bg-background/60 p-1 backdrop-blur-sm">
+          {(["nl", "en"] as const).map((option) => (
+            <button key={option} type="button" onClick={() => setLang(option)} aria-pressed={lang === option}
+              className={`min-h-11 rounded-full px-3 text-xs font-semibold uppercase tracking-wider transition-colors ${lang === option ? "bg-[#294758] text-white" : "text-muted-foreground hover:text-foreground"}`}>
+              {option}
+            </button>
+          ))}
+        </span>
+      </header>
+
+      <main className="relative z-10 flex flex-1 items-center px-4 pb-10 pt-4 sm:px-6">
+        <div className="mx-auto w-full max-w-lg">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border/50 bg-background/50 px-3 py-1.5 text-xs backdrop-blur-sm">
+            <ShieldCheck className="h-3.5 w-3.5 text-blue-600" />
+            <span className="text-muted-foreground">Tivexo IPTV</span>
+          </div>
+          <h1 className="text-3xl! leading-[1.1]! text-foreground sm:text-4xl!">
+            {t.exportHeading[0]}{" "}
+            <span className="bg-gradient-to-r from-blue-700 to-slate-500 bg-clip-text text-transparent">{t.exportHeading[1]}</span>
+          </h1>
+          <p className="mt-3 text-muted-foreground">{t.exportIntro}</p>
+
+          <div role="status" className={`mt-8 p-6 ${CARD}`}>
+            {status === "loading" && (
+              <div className="flex min-h-52 flex-col items-center justify-center text-center">
+                <Loader2 className="h-9 w-9 animate-spin text-blue-700" aria-hidden="true" />
+                <p className="mt-4 font-medium text-foreground">{t.exportLoading}</p>
+              </div>
+            )}
+            {status === "error" && (
+              <div className="flex min-h-52 flex-col items-center justify-center text-center">
+                <p className="text-foreground">{t.exportError}</p>
+                <Button type="button" variant="outline" onClick={() => setRetryKey((value) => value + 1)} className="mt-5 h-11">
+                  <RefreshCw className="h-4 w-4" /> {t.exportRetry}
+                </Button>
+              </div>
+            )}
+            {status === "ready" && (
+              <div>
+                <div className="flex items-center gap-3 text-foreground">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-700"><Check className="h-6 w-6" /></span>
+                  <p className="text-sm leading-relaxed">{t.exportReady}</p>
+                </div>
+                <Textarea ref={textRef} readOnly value={backup} rows={7} aria-label={t.backupLabel}
+                  className={`mt-5 field-sizing-fixed max-h-72 min-h-40 resize-y break-all border-border/50 bg-background/70 text-sm ${MONO}`} />
+                <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                  <Button type="button" onClick={() => void copyBackup()} className="h-12 bg-gradient-to-r from-blue-700 to-slate-500 text-white">
+                    {copied ? <Check className="h-4 w-4" /> : <Clipboard className="h-4 w-4" />} {copied ? t.exportCopied : t.exportCopy}
+                  </Button>
+                  <Button type="button" variant="outline" onClick={downloadBackup} className="h-12 border-border/50 bg-background/50">
+                    <Download className="h-4 w-4" /> {t.exportDownload}
+                  </Button>
+                </div>
+                <p className="mt-5 flex items-start gap-2 text-xs leading-relaxed text-muted-foreground">
+                  <ShieldCheck className="mt-px h-4 w-4 shrink-0 text-blue-600" /> {t.exportPrivacy}
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+      </main>
+      <footer className="relative z-10 px-4 py-5 text-center text-xs text-muted-foreground sm:px-6">
+        <span>&copy; {year} Next Horizons FZCO</span><span aria-hidden="true" className="px-2">&middot;</span>
+        <Link href="/privacy" className="underline underline-offset-4 transition-colors hover:text-foreground">{t.footerPrivacy}</Link>
+      </footer>
+    </div>
+  )
+}
+
+export function PairingClient(props: PairingClientProps) {
+  if (props.exportCode) {
+    return <BackupExportClient code={props.exportCode} initialLang={props.initialLang} year={props.year} />
+  }
+  return <PairingFormClient initialCode={props.initialCode} initialLang={props.initialLang} year={props.year} />
+}
+
+function PairingFormClient({
   initialCode,
   initialLang,
   year,

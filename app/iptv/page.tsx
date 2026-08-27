@@ -1,6 +1,11 @@
 import { headers } from "next/headers"
 import type { Metadata } from "next"
-import { CODE_LENGTH, normalizeCode } from "@/lib/iptv-pairing"
+import {
+  BACKUP_TRANSFER_CODE_LENGTH,
+  CODE_LENGTH,
+  isValidBackupTransferCode,
+  normalizeCode,
+} from "@/lib/iptv-pairing"
 import { PairingClient, type Lang } from "./pairing-client"
 
 export const metadata: Metadata = {
@@ -34,7 +39,7 @@ function preferredLang(header: string | null): Lang | undefined {
 export default async function IptvPairingPage({
   searchParams,
 }: {
-  searchParams: Promise<{ c?: string | string[] }>
+  searchParams: Promise<{ c?: string | string[]; export?: string | string[] }>
 }) {
   // Resolved here rather than in the client: the visitor has just scanned this
   // code off a Dutch television, and a paint of English copy before the swap is
@@ -45,8 +50,20 @@ export default async function IptvPairingPage({
   // client: that hook pushes the whole subtree behind a Suspense boundary that
   // Next renders on the client only. Passed down as a prop it is part of the
   // first paint, and the form is ordinary interactive HTML.
-  const raw = (await searchParams).c
+  const params = await searchParams
+  const raw = params.c
   const initialCode = normalizeCode(Array.isArray(raw) ? raw[0] : raw).slice(0, CODE_LENGTH)
+  const rawExport = params.export
+  const candidateExport = normalizeCode(Array.isArray(rawExport) ? rawExport[0] : rawExport)
+    .slice(0, BACKUP_TRANSFER_CODE_LENGTH)
+  const exportCode = isValidBackupTransferCode(candidateExport) ? candidateExport : ""
 
-  return <PairingClient initialCode={initialCode} initialLang={initialLang} year={new Date().getFullYear()} />
+  return (
+    <PairingClient
+      initialCode={initialCode}
+      initialLang={initialLang}
+      year={new Date().getFullYear()}
+      exportCode={exportCode}
+    />
+  )
 }

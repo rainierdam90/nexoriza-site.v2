@@ -28,12 +28,17 @@ import { z } from "zod"
 /** Ambiguous glyphs (0/O, 1/I/L, B) are excluded so codes survive being read off a TV screen. */
 export const CODE_ALPHABET = "23456789ACDEFGHJKMNPQRSTUVWXYZ"
 export const CODE_LENGTH = 6
+/** A long token used only to collect a TV-created backup on a phone. */
+export const BACKUP_TRANSFER_CODE_LENGTH = 16
 /** Sessions expire after 10 minutes; the TV generates a fresh code and QR when they do. */
 export const SESSION_TTL_SECONDS = 10 * 60
 /** Poll cadence the TV app uses. Documented here so rate limits stay compatible with it. */
 export const POLL_INTERVAL_MS = 3500
 
 const CODE_RE = new RegExp(`^[${CODE_ALPHABET}]{${CODE_LENGTH}}$`)
+const BACKUP_TRANSFER_CODE_RE = new RegExp(
+  `^[${CODE_ALPHABET}]{${BACKUP_TRANSFER_CODE_LENGTH}}$`,
+)
 
 /**
  * Normalises a code typed by hand or read from the `c` query parameter:
@@ -49,6 +54,15 @@ export function normalizeCode(raw: string | null | undefined): string {
 
 export function isValidCode(code: string): boolean {
   return CODE_RE.test(code)
+}
+
+export function isValidBackupTransferCode(code: string): boolean {
+  return BACKUP_TRANSFER_CODE_RE.test(code)
+}
+
+/** API sessions accept normal six-character pairing and long backup tokens. */
+export function isValidSessionCode(code: string): boolean {
+  return isValidCode(code) || isValidBackupTransferCode(code)
 }
 
 /**
