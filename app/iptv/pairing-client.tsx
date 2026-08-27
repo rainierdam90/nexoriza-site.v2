@@ -74,11 +74,13 @@ const strings = {
     sendAgainPrompt: "Gebeurt er niets op je televisie?",
     sendAgain: "Gegevens opnieuw invullen",
     privacyNote:
-      "Je gegevens gaan rechtstreeks naar je eigen televisie. Wij bewaren ze niet — ze staan alleen heel even klaar om het koppelen af te ronden.",
+      "Je gegevens worden via een beveiligde verbinding tijdelijk klaargezet en verwijderd zodra je televisie ze ophaalt, of uiterlijk na 10 minuten.",
     refreshNote:
       "De code op je televisie ververst elke 10 minuten. Staat er inmiddels een andere code op je scherm? Scan de QR-code dan opnieuw.",
     errorBadRequest: "Controleer de ingevulde gegevens en probeer het opnieuw.",
     errorExpired: "Deze code is niet meer geldig. Scan de QR-code op je televisie opnieuw.",
+    errorCodeInUse:
+      "Deze code is al gebruikt. Laat de televisie een nieuwe code tonen en scan die opnieuw.",
     errorTooLarge: "De back-upcode is te groot om te versturen.",
     errorRateLimited: "Te veel pogingen. Wacht even en probeer het daarna opnieuw.",
     errorServer: "Er ging iets mis aan onze kant. Probeer het zo nog een keer.",
@@ -135,11 +137,13 @@ const strings = {
     sendAgainPrompt: "Nothing happening on your television?",
     sendAgain: "Enter the details again",
     privacyNote:
-      "Your details go straight to your own television. We do not store them — they are held only briefly to complete the pairing.",
+      "Your details are held temporarily over a secure connection and deleted as soon as your television collects them, or after 10 minutes at the latest.",
     refreshNote:
       "The code on your television refreshes every 10 minutes. If your screen now shows a different code, scan the QR code again.",
     errorBadRequest: "Please check the details you entered and try again.",
     errorExpired: "This code is no longer valid. Scan the QR code on your television again.",
+    errorCodeInUse:
+      "This code has already been used. Let the television show a new code and scan it again.",
     errorTooLarge: "That backup code is too large to send.",
     errorRateLimited: "Too many attempts. Wait a moment and try again.",
     errorServer: "Something went wrong on our side. Please try again shortly.",
@@ -322,6 +326,7 @@ export function PairingClient({
 
   function messageForStatus(status: number): string {
     if (status === 404 || status === 410) return t.errorExpired
+    if (status === 409) return t.errorCodeInUse
     if (status === 413) return t.errorTooLarge
     if (status === 429) return t.errorRateLimited
     if (status >= 500) return t.errorServer

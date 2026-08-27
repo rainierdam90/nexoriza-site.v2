@@ -143,18 +143,37 @@ function memoryTake(key: string): string | null {
   return entry.expiresAt > now ? entry.value : null
 }
 
-/** Stores the payload under a namespaced key, expiring with the session. */
-export async function putSession(code: string, payload: PairingPayload): Promise<void> {
+/**
+ * Stores the payload under a namespaced key, expiring with the session.
+ *
+ * First write wins. A code can be shown by more than one TV only after an
+ * extremely unlikely random collision; silently overwriting the first payload
+ * would then hand one visitor's IPTV credentials to another household. Redis
+ * SET ... NX makes the check and write one atomic operation.
+ */
+export async function putSession(code: string, payload: PairingPayload): Promise<boolean> {
   const key = SESSION_PREFIX + code
   const value = JSON.stringify(payload)
 
   const cfg = redisConfig()
   if (cfg) {
-    await redisCommand(cfg, ["SET", key, value, "EX", String(SESSION_TTL_SECONDS)])
-    return
+    const result = await redisCommand(cfg, [
+      "SET",
+      key,
+      value,
+      "EX",
+      String(SESSION_TTL_SECONDS),
+      "NX",
+    ])
+    return result === "OK"
   }
 
-  memory.set(key, { value, expiresAt: Date.now() + SESSION_TTL_SECONDS * 1000 })
+  const now = Date.now()
+  sweep(now)
+  const existing = memory.get(key)
+  if (existing && existing.expiresAt > now) return false
+  memory.set(key, { value, expiresAt: now + SESSION_TTL_SECONDS * 1000 })
+  return true
 }
 
 /**

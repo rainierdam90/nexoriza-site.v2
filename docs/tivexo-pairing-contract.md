@@ -198,7 +198,7 @@ voor **alle velden behalve `backup.code`**:
 | `xtream.username` / `xtream.password` | 256 tekens | single-line, geen control-characters |
 | `m3u.playlistUrl` / `m3u.epgUrl` | 4096 tekens | single-line, geen control-characters |
 | `direct.streamUrl` | 4096 tekens | single-line, geen control-characters |
-| `backup.code` | 100.000 tekens | **alleen getrimd en lengtebegrensd** — mag élk control-character bevatten: newlines, maar ook `NUL`, `ESC` en de rest van C0/C1 |
+| `backup.code` | 20.000 tekens | **alleen getrimd en lengtebegrensd** — mag élk control-character bevatten: newlines, maar ook `NUL`, `ESC` en de rest van C0/C1 |
 | hele request body | 128 KB | geweigerd met `413`, nooit stilzwijgend afgekapt |
 
 "Geen control-characters" betekent precies: geen `U+0000`–`U+001F` en geen `U+007F`. Andere
@@ -223,6 +223,7 @@ vorm:
 | `error` | Status | Bij |
 |---|---|---|
 | `not_found` | `404` | `GET` — niets ingevuld, verlopen, al opgehaald, óf een ongeldige code |
+| `code_in_use` | `409` | `POST` — op deze code staat al een nog niet opgehaalde inzending |
 | `rate_limited` | `429` | `GET` en `POST` |
 | `server_error` | `500` | `GET` en `POST` |
 | `invalid_payload` | `400` | alleen `POST` |
@@ -353,7 +354,7 @@ De server telt per client-IP, in vaste vensters van 60 seconden, met **gescheide
 | Emmer | Budget |
 |---|---|
 | `GET /iptv/api/session/{CODE}` | **60 requests per 60 s per IP** |
-| `POST /iptv/api/session/{CODE}` | **30 requests per 60 s per IP** |
+| `POST /iptv/api/session/{CODE}` | **10 requests per 60 s per IP** |
 
 Het budget geldt per **publiek** IP, dus alle toestellen achter dezelfde router delen het. Eén tv op
 3500 ms verbruikt ~17 requests per minuut. Dat betekent in de praktijk:
@@ -527,15 +528,12 @@ De payload bevat IPTV-wachtwoorden. Daarom:
   ruwe payload daarna uit het geheugen. Geen kopie in `localStorage` "voor het geval dat".
 - Zet de code niet in een crashrapport of analytics-event.
 
-**Code-botsingen.** De server controleert bij een `POST` niet of een code al bezet is: een tweede
-telefoon die dezelfde code gebruikt, overschrijft de eerste payload. Twee tv's die tegelijk dezelfde
-code tonen, betekent dus niet "de pairing mislukt" maar **"de ene tv krijgt de IPTV-gegevens van een
-onbekende gebruiker"** — de one-time read levert de payload aan wie het eerst polt. Met 30⁶ ≈ 729
-miljoen codes en een TTL van 10 minuten is dat zeldzaam, maar de gevolgen zijn ernstig genoeg om de
-randombron serieus te nemen: zaai hem **per toestel**, niet per boot (§2). Een serverzijdige weigering
-van een `POST` op een bezette code — zodat de tweede gebruiker "ververs de code" te zien krijgt in
-plaats van stilletjes te overschrijven — is een mogelijke toekomstige aanscherping; reken er nu niet
-op.
+**Code-botsingen.** De server gebruikt atomisch first-write-wins (`SET … NX` in Redis). Een tweede
+telefoon die dezelfde code gebruikt, krijgt `409 {"error":"code_in_use"}` en kan de eerste payload
+niet overschrijven. De website vraagt die gebruiker om op de tv een nieuwe code te laten tonen. Met
+30⁶ ≈ 729 miljoen codes en een TTL van 10 minuten blijft een botsing zeer zeldzaam, maar de
+cryptografische randombron op de tv blijft verplicht: de weigering voorkomt gegevenslekken, niet de
+extra handeling voor de tweede gebruiker.
 
 ---
 

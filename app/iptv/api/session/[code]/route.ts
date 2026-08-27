@@ -155,7 +155,8 @@ export async function POST(req: NextRequest, ctx: RouteContext): Promise<NextRes
     // offending value, which here is a password.
     if (!parsed.success) return jsonResponse({ error: "invalid_payload" }, 400)
 
-    await putSession(code, parsed.data)
+    const stored = await putSession(code, parsed.data)
+    if (!stored) return jsonResponse({ error: "code_in_use" }, 409)
     return new NextResponse(null, { status: 204, headers: baseHeaders() })
   })
 }

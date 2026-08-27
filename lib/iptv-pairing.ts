@@ -12,6 +12,8 @@ import { z } from "zod"
  *      payload to /iptv/api/session/{CODE}
  *   3. The TV polls GET /iptv/api/session/{CODE} every 3.5s. The first 200
  *      hands over the payload and destroys the session (one-time read).
+ * A second POST while a payload is waiting is rejected with 409 code_in_use;
+ * the first visitor's credentials are never overwritten.
  *
  * The two endpoints answer a bad code differently, on purpose: POST reports a
  * malformed code as 400, while GET answers malformed, never-issued and expired
