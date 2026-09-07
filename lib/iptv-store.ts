@@ -57,6 +57,14 @@ export function storeKind(): "redis" | "memory" {
   return redisConfig() ? "redis" : "memory"
 }
 
+/** Internal server-only bridge for the encrypted companion relay. */
+export async function companionRedis(command: string[]): Promise<unknown | undefined> {
+  const cfg = redisConfig()
+  if (cfg) return redisCommand(cfg, command)
+  if (process.env.NODE_ENV === "production") throw new Error("Companion requires Redis")
+  return undefined
+}
+
 /**
  * Logs a value-free diagnostic and throws. Callers must not swallow this: a
  * silent failure loses a pairing the visitor already typed their credentials
